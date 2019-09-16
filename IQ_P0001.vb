@@ -31,7 +31,11 @@ Public Class IQ_P0001
     Dim Alt_F4 As Boolean
     Private DsTramites As New DataSet
     Private DbTramites As System.Data.OleDb.OleDbDataAdapter = New System.Data.OleDb.OleDbDataAdapter
-
+    Dim contadorAux As Integer = 0
+    Dim arrayValues() As String = {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"}
+    Dim arrayValuesAux() As Integer = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+    Dim posArray As SByte = 0
+    'Dim indice_primario As Integer
     Public Sub New()
 
         ' Llamada necesaria para el diseñador.
@@ -298,7 +302,7 @@ Public Class IQ_P0001
         cn.Open()
         DsTramites.Clear()
         With DbTramites
-            Dim SQLStr As String = "Select  * from Iq_TipTram Order by IQTiptram_Descripcion"
+            Dim SQLStr As String = "Select  * from Iq_TipTram Order by IQTipTram_Codigo"
             .TableMappings.Add("Table", "Iq_TipTram")
             Dim cmd As System.Data.OleDb.OleDbCommand = New System.Data.OleDb.OleDbCommand(SQLStr, cn)
             cmd.CommandType = CommandType.Text
@@ -482,7 +486,7 @@ Public Class IQ_P0001
                         Me.ChkPrim16.Visible = True
                 End Select
             End If
-            indice_secundario += 1
+            indice_secundario += 1 + 100
             Select Case indice_secundario
                 Case 1
                     Me.ChkSec01.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
@@ -1507,7 +1511,7 @@ Public Class IQ_P0001
             Verifica_Tramites = False
             Exit Function
         End If
-        If num_primarios > 1 Then
+        If num_primarios > 6 Then
             MessageBox.Show("NO PUEDE SELECCIONAR MAS DE UN TRAMITE PRIMARIO EFECTUADO POR EL TICKET", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Verifica_Tramites = False
             Exit Function
@@ -2898,4 +2902,400 @@ nuevamente:
             Case "Nuevo"
         End Select
     End Sub
+
+    Private Sub ChkPrim01_CheckedChanged(sender As Object, e As EventArgs) Handles ChkPrim01.CheckedChanged
+        'If checkAllCell() Then
+        If Me.ChkPrim01.Checked Then
+            aux("PBD")
+            Me.arrayValues(posArray) = "PBD"
+            posArray +=
+        Else
+            'cleanSecon()
+            auxErase("PBD")
+             posArray -=
+        End If
+    End Sub
+    Private Sub ChkPrim02_CheckedChanged(sender As Object, e As EventArgs) Handles ChkPrim02.CheckedChanged
+        'If checkAllCell() Then
+        If Me.ChkPrim02.Checked Then
+            ' cleanSecon()
+            aux("ST")
+        Else
+            'cleanSecon()
+            auxErase("ST")
+        End If
+
+
+    End Sub
+    Private Sub ChkPrim03_CheckedChanged(sender As Object, e As EventArgs) Handles ChkPrim03.CheckStateChanged
+        If Me.ChkPrim03.Checked Then
+            'cleanSecon()
+            aux("SF")
+        Else
+            'cleanSecon()
+            auxErase("SF")
+        End If
+    End Sub
+    Private Sub ChkPrim04_CheckedChanged(sender As Object, e As EventArgs) Handles ChkPrim04.CheckStateChanged
+        If Me.ChkPrim04.Checked Then
+            'cleanSecon()
+            aux("ERO")
+        Else
+            'cleanSecon()
+            auxErase("ERO")
+        End If
+    End Sub
+    Private Sub ChkPrim05_CheckedChanged(sender As Object, e As EventArgs) Handles ChkPrim05.CheckStateChanged
+        If Me.ChkPrim05.Checked Then
+            'cleanSecon()
+            aux("DJ")
+        Else
+            'cleanSecon()
+            auxErase("DJ")
+        End If
+    End Sub
+    Private Sub ChkPrim06_CheckedChanged(sender As Object, e As EventArgs) Handles ChkPrim06.CheckedChanged
+        If Me.ChkPrim06.Checked Then
+            'cleanSecon()
+            aux("NRT")
+        Else
+            'cleanSecon()
+            auxErase("NRT")
+        End If
+    End Sub
+    Private Sub ChkPrim07_CheckedChanged(sender As Object, e As EventArgs) Handles ChkPrim07.CheckedChanged
+        If Me.ChkPrim07.Checked Then
+            'cleanSecon()
+            aux("PTE")
+        Else
+            'cleanSecon()
+            auxErase("PTE")
+        End If
+    End Sub
+
+    Private Sub aux(ByVal Codigo As String)
+        Dim indice_primario As Integer = contadorAux
+        'Dim indice_secundario As Integer = contadorAux
+        For indice_busqueda = 0 To DsTramites.Tables("Iq_TipTram").Rows.Count - 1
+            If DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Ticket") = Codigo Then
+                indice_primario += 1
+                contadorAux += 1
+                Select Case indice_primario
+                    Case 1
+                        Me.ChkSec01.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec01.Visible = True
+                    Case 2
+                        Me.ChkSec02.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec02.Visible = True
+                    Case 3
+                        Me.ChkSec03.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec03.Visible = True
+                    Case 4
+                        Me.ChkSec04.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec04.Visible = True
+                    Case 5
+                        Me.ChkSec05.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec05.Visible = True
+                    Case 6
+                        Me.ChkSec06.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec06.Visible = True
+                    Case 7
+                        Me.ChkSec07.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec07.Visible = True
+                    Case 8
+                        Me.ChkSec08.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec08.Visible = True
+                    Case 9
+                        Me.ChkSec09.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec09.Visible = True
+                    Case 10
+                        Me.ChkSec10.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec10.Visible = True
+                    Case 11
+                        Me.ChkSec11.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec11.Visible = True
+                    Case 12
+                        Me.ChkSec12.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec12.Visible = True
+                    Case 13
+                        Me.ChkSec13.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec13.Visible = True
+                    Case 14
+                        Me.ChkSec14.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec14.Visible = True
+                    Case 15
+                        Me.ChkSec15.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec15.Visible = True
+                    Case 16
+                        Me.ChkSec16.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec16.Visible = True
+                    Case 17
+                        Me.ChkSec17.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec17.Visible = True
+                    Case 18
+                        Me.ChkSec18.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec18.Visible = True
+                    Case 19
+                        Me.ChkSec19.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec19.Visible = True
+                    Case 20
+                        Me.ChkSec20.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec20.Visible = True
+                    Case 21
+                        Me.ChkSec21.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec21.Visible = True
+                    Case 22
+                        Me.ChkSec22.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec22.Visible = True
+                    Case 23
+                        Me.ChkSec23.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec23.Visible = True
+                    Case 24
+                        Me.ChkSec24.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec24.Visible = True
+                    Case 25
+                        Me.ChkSec25.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec25.Visible = True
+                    Case 26
+                        Me.ChkSec26.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec26.Visible = True
+                    Case 27
+                        Me.ChkSec27.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec27.Visible = True
+                    Case 28
+                        Me.ChkSec28.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec28.Visible = True
+                    Case 29
+                        Me.ChkSec29.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec29.Visible = True
+                    Case 30
+                        Me.ChkSec30.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec30.Visible = True
+                    Case 31
+                        Me.ChkSec31.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec31.Visible = True
+                    Case 32
+                        Me.ChkSec32.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec32.Visible = True
+                End Select
+            End If
+
+        Next
+    End Sub
+    Private Sub cleanSecon()
+        contadorAux = 0
+        'Me.ChkPrim01.CheckState = 0
+        'Me.ChkPrim02.CheckState = 0
+        'Me.ChkPrim03.CheckState = 0
+        'Me.ChkPrim04.CheckState = 0
+        'Me.ChkPrim05.CheckState = 0
+        'Me.ChkPrim06.CheckState = 0
+        'Me.ChkPrim07.CheckState = 0
+        'Me.ChkPrim08.CheckState = 0
+        Me.ChkSec01.Visible = False
+        Me.ChkSec02.Visible = False
+        Me.ChkSec03.Visible = False
+        Me.ChkSec04.Visible = False
+        Me.ChkSec05.Visible = False
+        Me.ChkSec06.Visible = False
+        Me.ChkSec07.Visible = False
+        Me.ChkSec08.Visible = False
+        Me.ChkSec09.Visible = False
+        Me.ChkSec10.Visible = False
+        Me.ChkSec11.Visible = False
+        Me.ChkSec12.Visible = False
+        Me.ChkSec13.Visible = False
+        Me.ChkSec14.Visible = False
+        Me.ChkSec15.Visible = False
+        Me.ChkSec16.Visible = False
+        Me.ChkSec17.Visible = False
+        Me.ChkSec18.Visible = False
+        Me.ChkSec19.Visible = False
+        Me.ChkSec20.Visible = False
+        Me.ChkSec21.Visible = False
+        Me.ChkSec22.Visible = False
+        Me.ChkSec23.Visible = False
+        Me.ChkSec24.Visible = False
+        Me.ChkSec25.Visible = False
+        Me.ChkSec26.Visible = False
+        Me.ChkSec27.Visible = False
+        Me.ChkSec28.Visible = False
+        Me.ChkSec29.Visible = False
+        Me.ChkSec30.Visible = False
+        Me.ChkSec31.Visible = False
+        Me.ChkSec32.Visible = False
+
+        Me.ChkSec01.CheckState = 0
+        Me.ChkSec02.CheckState = 0
+        Me.ChkSec03.CheckState = 0
+        Me.ChkSec04.CheckState = 0
+        Me.ChkSec05.CheckState = 0
+        Me.ChkSec06.CheckState = 0
+        Me.ChkSec07.CheckState = 0
+        Me.ChkSec08.CheckState = 0
+        Me.ChkSec09.CheckState = 0
+        Me.ChkSec10.CheckState = 0
+        Me.ChkSec11.CheckState = 0
+        Me.ChkSec12.CheckState = 0
+        Me.ChkSec13.CheckState = 0
+        Me.ChkSec14.CheckState = 0
+        Me.ChkSec15.CheckState = 0
+        Me.ChkSec16.CheckState = 0
+        Me.ChkSec17.CheckState = 0
+        Me.ChkSec18.CheckState = 0
+        Me.ChkSec19.CheckState = 0
+        Me.ChkSec20.CheckState = 0
+        Me.ChkSec21.CheckState = 0
+        Me.ChkSec22.CheckState = 0
+        Me.ChkSec23.CheckState = 0
+        Me.ChkSec24.CheckState = 0
+        Me.ChkSec25.CheckState = 0
+        Me.ChkSec26.CheckState = 0
+        Me.ChkSec27.CheckState = 0
+        Me.ChkSec28.CheckState = 0
+        Me.ChkSec29.CheckState = 0
+        Me.ChkSec30.CheckState = 0
+        Me.ChkSec31.CheckState = 0
+        Me.ChkSec32.CheckState = 0
+    End Sub
+
+    Private Sub ChkPrim01_CheckedChanged_1(sender As Object, e As EventArgs) Handles ChkPrim01.CheckedChanged
+
+        'Me.ChkSec32.Text = Me.ChkSec01.Checked
+        'Me.ChkSec32.Visible = True
+    End Sub
+    Function checkAllCell() As Boolean
+        If Me.ChkPrim01.CheckState Then
+
+        Else
+            contadorAux = 0
+        End If
+
+        checkAllCell = False
+    End Function
+
+
+
+
+    Private Sub auxErase(ByVal Codigo As String)
+        Dim indice_primario As Integer = contadorAux
+        'Dim indice_secundario As Integer = contadorAux
+        For indice_busqueda = 0 To DsTramites.Tables("Iq_TipTram").Rows.Count - 1
+            If DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Ticket") = Codigo Then
+                
+                Select Case indice_primario
+                    Case 1
+                        Me.ChkSec01.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec01.Visible = False
+                    Case 2
+                        Me.ChkSec02.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec02.Visible = False
+                    Case 3
+                        Me.ChkSec03.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec03.Visible = False
+                    Case 4
+                        Me.ChkSec04.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec04.Visible = False
+                    Case 5
+                        Me.ChkSec05.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec05.Visible = False
+                    Case 6
+                        Me.ChkSec06.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec06.Visible = False
+                    Case 7
+                        Me.ChkSec07.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec07.Visible = False
+                    Case 8
+                        Me.ChkSec08.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec08.Visible = False
+                    Case 9
+                        Me.ChkSec09.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec09.Visible = False
+                    Case 10
+                        Me.ChkSec10.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec10.Visible = False
+                    Case 11
+                        Me.ChkSec11.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec11.Visible = False
+                    Case 12
+                        Me.ChkSec12.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec12.Visible = False
+                    Case 13
+                        Me.ChkSec13.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec13.Visible = False
+                    Case 14
+                        Me.ChkSec14.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec14.Visible = False
+                    Case 15
+                        Me.ChkSec15.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec15.Visible = False
+                    Case 16
+                        Me.ChkSec16.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec16.Visible = False
+                    Case 17
+                        Me.ChkSec17.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec17.Visible = False
+                    Case 18
+                        Me.ChkSec18.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec18.Visible = False
+                    Case 19
+                        Me.ChkSec19.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec19.Visible = False
+                    Case 20
+                        Me.ChkSec20.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec20.Visible = False
+                    Case 21
+                        Me.ChkSec21.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec21.Visible = False
+                    Case 22
+                        Me.ChkSec22.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec22.Visible = False
+                    Case 23
+                        Me.ChkSec23.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec23.Visible = False
+                    Case 24
+                        Me.ChkSec24.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec24.Visible = False
+                    Case 25
+                        Me.ChkSec25.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec25.Visible = False
+                    Case 26
+                        Me.ChkSec26.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec26.Visible = False
+                    Case 27
+                        Me.ChkSec27.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec27.Visible = False
+                    Case 28
+                        Me.ChkSec28.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec28.Visible = False
+                    Case 29
+                        Me.ChkSec29.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec29.Visible = False
+                    Case 30
+                        Me.ChkSec30.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec30.Visible = False
+                    Case 31
+                        Me.ChkSec31.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec31.Visible = False
+                    Case 32
+                        Me.ChkSec32.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
+                        Me.ChkSec32.Visible = False
+                End Select
+                indice_primario -= 1
+                contadorAux -= 1
+            End If
+
+        Next
+    End Sub
+    Private Sub uncheckFunc()
+        For Indice_Ips = 0 To 15
+            Me.arrayValues(0) = ""
+
+        Next
+    End Sub
+
 End Class
+
+
+
+

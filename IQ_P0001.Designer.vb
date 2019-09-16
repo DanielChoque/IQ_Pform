@@ -304,7 +304,7 @@ Partial Class IQ_P0001
         '
         Me.LblTicket.BackColor = System.Drawing.Color.White
         Me.LblTicket.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.LblTicket.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTicket.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblTicket.Location = New System.Drawing.Point(201, 9)
         Me.LblTicket.Name = "LblTicket"
         Me.LblTicket.Size = New System.Drawing.Size(148, 30)
@@ -433,7 +433,7 @@ Partial Class IQ_P0001
         Me.LblVersion.BackColor = System.Drawing.Color.Transparent
         Me.LblVersion.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblVersion.ForeColor = System.Drawing.Color.White
-        Me.LblVersion.Location = New System.Drawing.Point(2, 462)
+        Me.LblVersion.Location = New System.Drawing.Point(2, 512)
         Me.LblVersion.Name = "LblVersion"
         Me.LblVersion.Size = New System.Drawing.Size(33, 9)
         Me.LblVersion.TabIndex = 95
@@ -667,12 +667,12 @@ Partial Class IQ_P0001
         Me.PnlSecundario.Controls.Add(Me.Label2)
         Me.PnlSecundario.Location = New System.Drawing.Point(14, 261)
         Me.PnlSecundario.Name = "PnlSecundario"
-        Me.PnlSecundario.Size = New System.Drawing.Size(1011, 201)
+        Me.PnlSecundario.Size = New System.Drawing.Size(1011, 251)
         Me.PnlSecundario.TabIndex = 97
         '
         'ChkSec29
         '
-        Me.ChkSec29.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec29.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec29.Location = New System.Drawing.Point(747, 116)
         Me.ChkSec29.Name = "ChkSec29"
         Me.ChkSec29.Size = New System.Drawing.Size(239, 24)
@@ -681,7 +681,7 @@ Partial Class IQ_P0001
         '
         'ChkSec30
         '
-        Me.ChkSec30.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec30.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec30.Location = New System.Drawing.Point(747, 136)
         Me.ChkSec30.Name = "ChkSec30"
         Me.ChkSec30.Size = New System.Drawing.Size(239, 24)
@@ -690,7 +690,7 @@ Partial Class IQ_P0001
         '
         'ChkSec31
         '
-        Me.ChkSec31.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec31.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec31.Location = New System.Drawing.Point(747, 156)
         Me.ChkSec31.Name = "ChkSec31"
         Me.ChkSec31.Size = New System.Drawing.Size(239, 24)
@@ -699,7 +699,7 @@ Partial Class IQ_P0001
         '
         'ChkSec32
         '
-        Me.ChkSec32.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec32.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec32.Location = New System.Drawing.Point(747, 176)
         Me.ChkSec32.Name = "ChkSec32"
         Me.ChkSec32.Size = New System.Drawing.Size(239, 24)
@@ -708,7 +708,7 @@ Partial Class IQ_P0001
         '
         'ChkSec26
         '
-        Me.ChkSec26.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec26.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec26.Location = New System.Drawing.Point(747, 56)
         Me.ChkSec26.Name = "ChkSec26"
         Me.ChkSec26.Size = New System.Drawing.Size(239, 24)
@@ -717,7 +717,7 @@ Partial Class IQ_P0001
         '
         'ChkSec27
         '
-        Me.ChkSec27.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec27.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec27.Location = New System.Drawing.Point(747, 76)
         Me.ChkSec27.Name = "ChkSec27"
         Me.ChkSec27.Size = New System.Drawing.Size(239, 24)
@@ -726,7 +726,7 @@ Partial Class IQ_P0001
         '
         'ChkSec28
         '
-        Me.ChkSec28.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec28.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec28.Location = New System.Drawing.Point(747, 96)
         Me.ChkSec28.Name = "ChkSec28"
         Me.ChkSec28.Size = New System.Drawing.Size(239, 24)
@@ -735,7 +735,7 @@ Partial Class IQ_P0001
         '
         'ChkSec25
         '
-        Me.ChkSec25.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec25.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec25.Location = New System.Drawing.Point(747, 36)
         Me.ChkSec25.Name = "ChkSec25"
         Me.ChkSec25.Size = New System.Drawing.Size(239, 24)
@@ -744,7 +744,7 @@ Partial Class IQ_P0001
         '
         'ChkSec21
         '
-        Me.ChkSec21.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec21.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec21.Location = New System.Drawing.Point(502, 116)
         Me.ChkSec21.Name = "ChkSec21"
         Me.ChkSec21.Size = New System.Drawing.Size(241, 24)
@@ -753,7 +753,7 @@ Partial Class IQ_P0001
         '
         'ChkSec22
         '
-        Me.ChkSec22.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec22.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec22.Location = New System.Drawing.Point(502, 136)
         Me.ChkSec22.Name = "ChkSec22"
         Me.ChkSec22.Size = New System.Drawing.Size(241, 24)
@@ -762,7 +762,7 @@ Partial Class IQ_P0001
         '
         'ChkSec23
         '
-        Me.ChkSec23.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec23.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec23.Location = New System.Drawing.Point(502, 156)
         Me.ChkSec23.Name = "ChkSec23"
         Me.ChkSec23.Size = New System.Drawing.Size(241, 24)
@@ -771,7 +771,7 @@ Partial Class IQ_P0001
         '
         'ChkSec24
         '
-        Me.ChkSec24.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec24.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec24.Location = New System.Drawing.Point(502, 176)
         Me.ChkSec24.Name = "ChkSec24"
         Me.ChkSec24.Size = New System.Drawing.Size(241, 24)
@@ -780,7 +780,7 @@ Partial Class IQ_P0001
         '
         'ChkSec18
         '
-        Me.ChkSec18.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec18.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec18.Location = New System.Drawing.Point(502, 56)
         Me.ChkSec18.Name = "ChkSec18"
         Me.ChkSec18.Size = New System.Drawing.Size(241, 24)
@@ -789,7 +789,7 @@ Partial Class IQ_P0001
         '
         'ChkSec19
         '
-        Me.ChkSec19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec19.Location = New System.Drawing.Point(502, 76)
         Me.ChkSec19.Name = "ChkSec19"
         Me.ChkSec19.Size = New System.Drawing.Size(241, 24)
@@ -798,7 +798,7 @@ Partial Class IQ_P0001
         '
         'ChkSec20
         '
-        Me.ChkSec20.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec20.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec20.Location = New System.Drawing.Point(502, 96)
         Me.ChkSec20.Name = "ChkSec20"
         Me.ChkSec20.Size = New System.Drawing.Size(241, 24)
@@ -807,7 +807,7 @@ Partial Class IQ_P0001
         '
         'ChkSec17
         '
-        Me.ChkSec17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec17.Location = New System.Drawing.Point(502, 36)
         Me.ChkSec17.Name = "ChkSec17"
         Me.ChkSec17.Size = New System.Drawing.Size(239, 24)
@@ -816,7 +816,7 @@ Partial Class IQ_P0001
         '
         'ChkSec13
         '
-        Me.ChkSec13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec13.Location = New System.Drawing.Point(257, 116)
         Me.ChkSec13.Name = "ChkSec13"
         Me.ChkSec13.Size = New System.Drawing.Size(239, 24)
@@ -825,7 +825,7 @@ Partial Class IQ_P0001
         '
         'ChkSec14
         '
-        Me.ChkSec14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec14.Location = New System.Drawing.Point(257, 136)
         Me.ChkSec14.Name = "ChkSec14"
         Me.ChkSec14.Size = New System.Drawing.Size(239, 24)
@@ -834,7 +834,7 @@ Partial Class IQ_P0001
         '
         'ChkSec15
         '
-        Me.ChkSec15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec15.Location = New System.Drawing.Point(257, 156)
         Me.ChkSec15.Name = "ChkSec15"
         Me.ChkSec15.Size = New System.Drawing.Size(239, 24)
@@ -843,7 +843,7 @@ Partial Class IQ_P0001
         '
         'ChkSec16
         '
-        Me.ChkSec16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec16.Location = New System.Drawing.Point(257, 176)
         Me.ChkSec16.Name = "ChkSec16"
         Me.ChkSec16.Size = New System.Drawing.Size(239, 24)
@@ -852,7 +852,7 @@ Partial Class IQ_P0001
         '
         'ChkSec10
         '
-        Me.ChkSec10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec10.Location = New System.Drawing.Point(257, 56)
         Me.ChkSec10.Name = "ChkSec10"
         Me.ChkSec10.Size = New System.Drawing.Size(239, 24)
@@ -861,7 +861,7 @@ Partial Class IQ_P0001
         '
         'ChkSec11
         '
-        Me.ChkSec11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec11.Location = New System.Drawing.Point(257, 76)
         Me.ChkSec11.Name = "ChkSec11"
         Me.ChkSec11.Size = New System.Drawing.Size(239, 24)
@@ -870,7 +870,7 @@ Partial Class IQ_P0001
         '
         'ChkSec12
         '
-        Me.ChkSec12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec12.Location = New System.Drawing.Point(257, 96)
         Me.ChkSec12.Name = "ChkSec12"
         Me.ChkSec12.Size = New System.Drawing.Size(239, 24)
@@ -879,7 +879,7 @@ Partial Class IQ_P0001
         '
         'ChkSec09
         '
-        Me.ChkSec09.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec09.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec09.Location = New System.Drawing.Point(257, 36)
         Me.ChkSec09.Name = "ChkSec09"
         Me.ChkSec09.Size = New System.Drawing.Size(239, 24)
@@ -888,7 +888,7 @@ Partial Class IQ_P0001
         '
         'ChkSec05
         '
-        Me.ChkSec05.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec05.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec05.Location = New System.Drawing.Point(12, 116)
         Me.ChkSec05.Name = "ChkSec05"
         Me.ChkSec05.Size = New System.Drawing.Size(239, 24)
@@ -897,7 +897,7 @@ Partial Class IQ_P0001
         '
         'ChkSec06
         '
-        Me.ChkSec06.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec06.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec06.Location = New System.Drawing.Point(12, 136)
         Me.ChkSec06.Name = "ChkSec06"
         Me.ChkSec06.Size = New System.Drawing.Size(239, 24)
@@ -906,7 +906,7 @@ Partial Class IQ_P0001
         '
         'ChkSec07
         '
-        Me.ChkSec07.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec07.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec07.Location = New System.Drawing.Point(12, 156)
         Me.ChkSec07.Name = "ChkSec07"
         Me.ChkSec07.Size = New System.Drawing.Size(239, 24)
@@ -915,7 +915,7 @@ Partial Class IQ_P0001
         '
         'ChkSec08
         '
-        Me.ChkSec08.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec08.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec08.Location = New System.Drawing.Point(12, 176)
         Me.ChkSec08.Name = "ChkSec08"
         Me.ChkSec08.Size = New System.Drawing.Size(239, 24)
@@ -924,7 +924,7 @@ Partial Class IQ_P0001
         '
         'ChkSec02
         '
-        Me.ChkSec02.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec02.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec02.Location = New System.Drawing.Point(12, 56)
         Me.ChkSec02.Name = "ChkSec02"
         Me.ChkSec02.Size = New System.Drawing.Size(239, 24)
@@ -933,7 +933,7 @@ Partial Class IQ_P0001
         '
         'ChkSec03
         '
-        Me.ChkSec03.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec03.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec03.Location = New System.Drawing.Point(12, 76)
         Me.ChkSec03.Name = "ChkSec03"
         Me.ChkSec03.Size = New System.Drawing.Size(239, 24)
@@ -942,7 +942,7 @@ Partial Class IQ_P0001
         '
         'ChkSec04
         '
-        Me.ChkSec04.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec04.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec04.Location = New System.Drawing.Point(12, 96)
         Me.ChkSec04.Name = "ChkSec04"
         Me.ChkSec04.Size = New System.Drawing.Size(239, 24)
@@ -951,7 +951,7 @@ Partial Class IQ_P0001
         '
         'ChkSec01
         '
-        Me.ChkSec01.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec01.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec01.Location = New System.Drawing.Point(12, 36)
         Me.ChkSec01.Name = "ChkSec01"
         Me.ChkSec01.Size = New System.Drawing.Size(239, 24)
@@ -986,7 +986,7 @@ Partial Class IQ_P0001
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1037, 471)
+        Me.ClientSize = New System.Drawing.Size(1037, 521)
         Me.ControlBox = False
         Me.Controls.Add(Me.PnlSecundario)
         Me.Controls.Add(Me.PnlPrimario)
