@@ -77,6 +77,11 @@ Partial Class IQ_P0001
         Me.ChkPrim01 = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PnlSecundario = New System.Windows.Forms.Panel()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.txtName1 = New System.Windows.Forms.TextBox()
+        Me.txtNit1 = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.ChkSec29 = New System.Windows.Forms.CheckBox()
         Me.ChkSec30 = New System.Windows.Forms.CheckBox()
         Me.ChkSec31 = New System.Windows.Forms.CheckBox()
@@ -304,7 +309,7 @@ Partial Class IQ_P0001
         '
         Me.LblTicket.BackColor = System.Drawing.Color.White
         Me.LblTicket.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.LblTicket.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTicket.Font = New System.Drawing.Font("Tahoma", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblTicket.Location = New System.Drawing.Point(201, 9)
         Me.LblTicket.Name = "LblTicket"
         Me.LblTicket.Size = New System.Drawing.Size(148, 30)
@@ -433,7 +438,7 @@ Partial Class IQ_P0001
         Me.LblVersion.BackColor = System.Drawing.Color.Transparent
         Me.LblVersion.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblVersion.ForeColor = System.Drawing.Color.White
-        Me.LblVersion.Location = New System.Drawing.Point(2, 512)
+        Me.LblVersion.Location = New System.Drawing.Point(16, 512)
         Me.LblVersion.Name = "LblVersion"
         Me.LblVersion.Size = New System.Drawing.Size(33, 9)
         Me.LblVersion.TabIndex = 95
@@ -469,150 +474,150 @@ Partial Class IQ_P0001
         Me.PnlPrimario.Controls.Add(Me.Label1)
         Me.PnlPrimario.Location = New System.Drawing.Point(500, 57)
         Me.PnlPrimario.Name = "PnlPrimario"
-        Me.PnlPrimario.Size = New System.Drawing.Size(525, 201)
+        Me.PnlPrimario.Size = New System.Drawing.Size(725, 201)
         Me.PnlPrimario.TabIndex = 96
         '
         'ChkPrim13
         '
-        Me.ChkPrim13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkPrim13.Location = New System.Drawing.Point(267, 115)
+        Me.ChkPrim13.Font = New System.Drawing.Font("Tahoma", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkPrim13.Location = New System.Drawing.Point(367, 118)
         Me.ChkPrim13.Name = "ChkPrim13"
-        Me.ChkPrim13.Size = New System.Drawing.Size(245, 24)
+        Me.ChkPrim13.Size = New System.Drawing.Size(345, 21)
         Me.ChkPrim13.TabIndex = 79
         Me.ChkPrim13.UseVisualStyleBackColor = True
         '
         'ChkPrim14
         '
-        Me.ChkPrim14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkPrim14.Location = New System.Drawing.Point(267, 135)
+        Me.ChkPrim14.Font = New System.Drawing.Font("Tahoma", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkPrim14.Location = New System.Drawing.Point(367, 138)
         Me.ChkPrim14.Name = "ChkPrim14"
-        Me.ChkPrim14.Size = New System.Drawing.Size(245, 24)
+        Me.ChkPrim14.Size = New System.Drawing.Size(345, 21)
         Me.ChkPrim14.TabIndex = 78
         Me.ChkPrim14.UseVisualStyleBackColor = True
         '
         'ChkPrim15
         '
-        Me.ChkPrim15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkPrim15.Location = New System.Drawing.Point(267, 155)
+        Me.ChkPrim15.Font = New System.Drawing.Font("Tahoma", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkPrim15.Location = New System.Drawing.Point(367, 158)
         Me.ChkPrim15.Name = "ChkPrim15"
-        Me.ChkPrim15.Size = New System.Drawing.Size(245, 24)
+        Me.ChkPrim15.Size = New System.Drawing.Size(345, 21)
         Me.ChkPrim15.TabIndex = 77
         Me.ChkPrim15.UseVisualStyleBackColor = True
         '
         'ChkPrim16
         '
-        Me.ChkPrim16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkPrim16.Location = New System.Drawing.Point(267, 175)
+        Me.ChkPrim16.Font = New System.Drawing.Font("Tahoma", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkPrim16.Location = New System.Drawing.Point(367, 178)
         Me.ChkPrim16.Name = "ChkPrim16"
-        Me.ChkPrim16.Size = New System.Drawing.Size(245, 24)
+        Me.ChkPrim16.Size = New System.Drawing.Size(345, 21)
         Me.ChkPrim16.TabIndex = 76
         Me.ChkPrim16.UseVisualStyleBackColor = True
         '
         'ChkPrim10
         '
-        Me.ChkPrim10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkPrim10.Location = New System.Drawing.Point(267, 55)
+        Me.ChkPrim10.Font = New System.Drawing.Font("Tahoma", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkPrim10.Location = New System.Drawing.Point(367, 58)
         Me.ChkPrim10.Name = "ChkPrim10"
-        Me.ChkPrim10.Size = New System.Drawing.Size(245, 24)
+        Me.ChkPrim10.Size = New System.Drawing.Size(345, 21)
         Me.ChkPrim10.TabIndex = 75
         Me.ChkPrim10.UseVisualStyleBackColor = True
         '
         'ChkPrim11
         '
-        Me.ChkPrim11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkPrim11.Location = New System.Drawing.Point(267, 75)
+        Me.ChkPrim11.Font = New System.Drawing.Font("Tahoma", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkPrim11.Location = New System.Drawing.Point(367, 78)
         Me.ChkPrim11.Name = "ChkPrim11"
-        Me.ChkPrim11.Size = New System.Drawing.Size(245, 24)
+        Me.ChkPrim11.Size = New System.Drawing.Size(345, 21)
         Me.ChkPrim11.TabIndex = 74
         Me.ChkPrim11.UseVisualStyleBackColor = True
         '
         'ChkPrim12
         '
-        Me.ChkPrim12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkPrim12.Location = New System.Drawing.Point(267, 95)
+        Me.ChkPrim12.Font = New System.Drawing.Font("Tahoma", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkPrim12.Location = New System.Drawing.Point(367, 98)
         Me.ChkPrim12.Name = "ChkPrim12"
-        Me.ChkPrim12.Size = New System.Drawing.Size(245, 24)
+        Me.ChkPrim12.Size = New System.Drawing.Size(345, 21)
         Me.ChkPrim12.TabIndex = 73
         Me.ChkPrim12.UseVisualStyleBackColor = True
         '
         'ChkPrim09
         '
-        Me.ChkPrim09.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkPrim09.Location = New System.Drawing.Point(267, 35)
+        Me.ChkPrim09.Font = New System.Drawing.Font("Tahoma", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkPrim09.Location = New System.Drawing.Point(367, 38)
         Me.ChkPrim09.Name = "ChkPrim09"
-        Me.ChkPrim09.Size = New System.Drawing.Size(245, 24)
+        Me.ChkPrim09.Size = New System.Drawing.Size(345, 21)
         Me.ChkPrim09.TabIndex = 72
         Me.ChkPrim09.UseVisualStyleBackColor = True
         '
         'ChkPrim05
         '
-        Me.ChkPrim05.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkPrim05.Location = New System.Drawing.Point(12, 115)
+        Me.ChkPrim05.Font = New System.Drawing.Font("Tahoma", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkPrim05.Location = New System.Drawing.Point(12, 118)
         Me.ChkPrim05.Name = "ChkPrim05"
-        Me.ChkPrim05.Size = New System.Drawing.Size(245, 24)
+        Me.ChkPrim05.Size = New System.Drawing.Size(300, 21)
         Me.ChkPrim05.TabIndex = 71
         Me.ChkPrim05.UseVisualStyleBackColor = True
         '
         'ChkPrim06
         '
-        Me.ChkPrim06.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkPrim06.Location = New System.Drawing.Point(12, 135)
+        Me.ChkPrim06.Font = New System.Drawing.Font("Tahoma", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkPrim06.Location = New System.Drawing.Point(12, 138)
         Me.ChkPrim06.Name = "ChkPrim06"
-        Me.ChkPrim06.Size = New System.Drawing.Size(245, 24)
+        Me.ChkPrim06.Size = New System.Drawing.Size(350, 21)
         Me.ChkPrim06.TabIndex = 70
         Me.ChkPrim06.UseVisualStyleBackColor = True
         '
         'ChkPrim07
         '
-        Me.ChkPrim07.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkPrim07.Location = New System.Drawing.Point(12, 155)
+        Me.ChkPrim07.Font = New System.Drawing.Font("Tahoma", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkPrim07.Location = New System.Drawing.Point(12, 158)
         Me.ChkPrim07.Name = "ChkPrim07"
-        Me.ChkPrim07.Size = New System.Drawing.Size(245, 24)
+        Me.ChkPrim07.Size = New System.Drawing.Size(350, 21)
         Me.ChkPrim07.TabIndex = 69
         Me.ChkPrim07.UseVisualStyleBackColor = True
         '
         'ChkPrim08
         '
-        Me.ChkPrim08.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkPrim08.Location = New System.Drawing.Point(12, 175)
+        Me.ChkPrim08.Font = New System.Drawing.Font("Tahoma", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkPrim08.Location = New System.Drawing.Point(12, 178)
         Me.ChkPrim08.Name = "ChkPrim08"
-        Me.ChkPrim08.Size = New System.Drawing.Size(245, 24)
+        Me.ChkPrim08.Size = New System.Drawing.Size(350, 21)
         Me.ChkPrim08.TabIndex = 68
         Me.ChkPrim08.UseVisualStyleBackColor = True
         '
         'ChkPrim02
         '
-        Me.ChkPrim02.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkPrim02.Location = New System.Drawing.Point(12, 55)
+        Me.ChkPrim02.Font = New System.Drawing.Font("Tahoma", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkPrim02.Location = New System.Drawing.Point(12, 58)
         Me.ChkPrim02.Name = "ChkPrim02"
-        Me.ChkPrim02.Size = New System.Drawing.Size(245, 24)
+        Me.ChkPrim02.Size = New System.Drawing.Size(350, 21)
         Me.ChkPrim02.TabIndex = 65
         Me.ChkPrim02.UseVisualStyleBackColor = True
         '
         'ChkPrim03
         '
-        Me.ChkPrim03.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkPrim03.Location = New System.Drawing.Point(12, 75)
+        Me.ChkPrim03.Font = New System.Drawing.Font("Tahoma", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkPrim03.Location = New System.Drawing.Point(12, 78)
         Me.ChkPrim03.Name = "ChkPrim03"
-        Me.ChkPrim03.Size = New System.Drawing.Size(245, 24)
+        Me.ChkPrim03.Size = New System.Drawing.Size(350, 21)
         Me.ChkPrim03.TabIndex = 64
         Me.ChkPrim03.UseVisualStyleBackColor = True
         '
         'ChkPrim04
         '
-        Me.ChkPrim04.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkPrim04.Location = New System.Drawing.Point(12, 95)
+        Me.ChkPrim04.Font = New System.Drawing.Font("Tahoma", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkPrim04.Location = New System.Drawing.Point(12, 98)
         Me.ChkPrim04.Name = "ChkPrim04"
-        Me.ChkPrim04.Size = New System.Drawing.Size(245, 24)
+        Me.ChkPrim04.Size = New System.Drawing.Size(350, 21)
         Me.ChkPrim04.TabIndex = 63
         Me.ChkPrim04.UseVisualStyleBackColor = True
         '
         'ChkPrim01
         '
-        Me.ChkPrim01.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkPrim01.Location = New System.Drawing.Point(12, 35)
+        Me.ChkPrim01.Font = New System.Drawing.Font("Tahoma", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkPrim01.Location = New System.Drawing.Point(12, 38)
         Me.ChkPrim01.Name = "ChkPrim01"
-        Me.ChkPrim01.Size = New System.Drawing.Size(245, 24)
+        Me.ChkPrim01.Size = New System.Drawing.Size(350, 21)
         Me.ChkPrim01.TabIndex = 59
         Me.ChkPrim01.UseVisualStyleBackColor = True
         '
@@ -624,7 +629,7 @@ Partial Class IQ_P0001
         Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(12, 3)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(500, 30)
+        Me.Label1.Size = New System.Drawing.Size(700, 30)
         Me.Label1.TabIndex = 58
         Me.Label1.Text = "Trámite Primario"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -632,6 +637,11 @@ Partial Class IQ_P0001
         'PnlSecundario
         '
         Me.PnlSecundario.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.PnlSecundario.Controls.Add(Me.Label7)
+        Me.PnlSecundario.Controls.Add(Me.Label6)
+        Me.PnlSecundario.Controls.Add(Me.txtName1)
+        Me.PnlSecundario.Controls.Add(Me.txtNit1)
+        Me.PnlSecundario.Controls.Add(Me.Button1)
         Me.PnlSecundario.Controls.Add(Me.ChkSec29)
         Me.PnlSecundario.Controls.Add(Me.ChkSec30)
         Me.PnlSecundario.Controls.Add(Me.ChkSec31)
@@ -667,294 +677,338 @@ Partial Class IQ_P0001
         Me.PnlSecundario.Controls.Add(Me.Label2)
         Me.PnlSecundario.Location = New System.Drawing.Point(14, 261)
         Me.PnlSecundario.Name = "PnlSecundario"
-        Me.PnlSecundario.Size = New System.Drawing.Size(1011, 251)
+        Me.PnlSecundario.Size = New System.Drawing.Size(1211, 251)
         Me.PnlSecundario.TabIndex = 97
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(18, 231)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(54, 13)
+        Me.Label7.TabIndex = 108
+        Me.Label7.Text = "Nombre:"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(41, 210)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(32, 13)
+        Me.Label6.TabIndex = 107
+        Me.Label6.Text = "NIT:"
+        '
+        'txtName1
+        '
+        Me.txtName1.Location = New System.Drawing.Point(74, 228)
+        Me.txtName1.Name = "txtName1"
+        Me.txtName1.Size = New System.Drawing.Size(522, 20)
+        Me.txtName1.TabIndex = 106
+        '
+        'txtNit1
+        '
+        Me.txtNit1.Location = New System.Drawing.Point(74, 207)
+        Me.txtNit1.Name = "txtNit1"
+        Me.txtNit1.Size = New System.Drawing.Size(522, 20)
+        Me.txtNit1.TabIndex = 105
+        '
+        'Button1
+        '
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(612, 213)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(95, 25)
+        Me.Button1.TabIndex = 104
+        Me.Button1.Text = "   Guardar "
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'ChkSec29
         '
-        Me.ChkSec29.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkSec29.Location = New System.Drawing.Point(747, 116)
+        Me.ChkSec29.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec29.Location = New System.Drawing.Point(897, 116)
         Me.ChkSec29.Name = "ChkSec29"
-        Me.ChkSec29.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec29.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec29.TabIndex = 103
         Me.ChkSec29.UseVisualStyleBackColor = True
         '
         'ChkSec30
         '
-        Me.ChkSec30.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkSec30.Location = New System.Drawing.Point(747, 136)
+        Me.ChkSec30.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec30.Location = New System.Drawing.Point(897, 136)
         Me.ChkSec30.Name = "ChkSec30"
-        Me.ChkSec30.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec30.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec30.TabIndex = 102
         Me.ChkSec30.UseVisualStyleBackColor = True
         '
         'ChkSec31
         '
-        Me.ChkSec31.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkSec31.Location = New System.Drawing.Point(747, 156)
+        Me.ChkSec31.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec31.Location = New System.Drawing.Point(897, 156)
         Me.ChkSec31.Name = "ChkSec31"
-        Me.ChkSec31.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec31.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec31.TabIndex = 101
         Me.ChkSec31.UseVisualStyleBackColor = True
         '
         'ChkSec32
         '
-        Me.ChkSec32.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkSec32.Location = New System.Drawing.Point(747, 176)
+        Me.ChkSec32.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec32.Location = New System.Drawing.Point(897, 176)
         Me.ChkSec32.Name = "ChkSec32"
-        Me.ChkSec32.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec32.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec32.TabIndex = 100
         Me.ChkSec32.UseVisualStyleBackColor = True
         '
         'ChkSec26
         '
-        Me.ChkSec26.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkSec26.Location = New System.Drawing.Point(747, 56)
+        Me.ChkSec26.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec26.Location = New System.Drawing.Point(897, 56)
         Me.ChkSec26.Name = "ChkSec26"
-        Me.ChkSec26.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec26.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec26.TabIndex = 99
         Me.ChkSec26.UseVisualStyleBackColor = True
         '
         'ChkSec27
         '
-        Me.ChkSec27.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkSec27.Location = New System.Drawing.Point(747, 76)
+        Me.ChkSec27.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec27.Location = New System.Drawing.Point(897, 76)
         Me.ChkSec27.Name = "ChkSec27"
-        Me.ChkSec27.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec27.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec27.TabIndex = 98
         Me.ChkSec27.UseVisualStyleBackColor = True
         '
         'ChkSec28
         '
-        Me.ChkSec28.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkSec28.Location = New System.Drawing.Point(747, 96)
+        Me.ChkSec28.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec28.Location = New System.Drawing.Point(897, 96)
         Me.ChkSec28.Name = "ChkSec28"
-        Me.ChkSec28.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec28.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec28.TabIndex = 97
         Me.ChkSec28.UseVisualStyleBackColor = True
         '
         'ChkSec25
         '
-        Me.ChkSec25.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkSec25.Location = New System.Drawing.Point(747, 36)
+        Me.ChkSec25.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec25.Location = New System.Drawing.Point(897, 36)
         Me.ChkSec25.Name = "ChkSec25"
-        Me.ChkSec25.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec25.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec25.TabIndex = 96
         Me.ChkSec25.UseVisualStyleBackColor = True
         '
         'ChkSec21
         '
-        Me.ChkSec21.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkSec21.Location = New System.Drawing.Point(502, 116)
+        Me.ChkSec21.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec21.Location = New System.Drawing.Point(602, 116)
         Me.ChkSec21.Name = "ChkSec21"
-        Me.ChkSec21.Size = New System.Drawing.Size(241, 24)
+        Me.ChkSec21.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec21.TabIndex = 95
         Me.ChkSec21.UseVisualStyleBackColor = True
         '
         'ChkSec22
         '
-        Me.ChkSec22.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkSec22.Location = New System.Drawing.Point(502, 136)
+        Me.ChkSec22.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec22.Location = New System.Drawing.Point(602, 136)
         Me.ChkSec22.Name = "ChkSec22"
-        Me.ChkSec22.Size = New System.Drawing.Size(241, 24)
+        Me.ChkSec22.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec22.TabIndex = 94
         Me.ChkSec22.UseVisualStyleBackColor = True
         '
         'ChkSec23
         '
-        Me.ChkSec23.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkSec23.Location = New System.Drawing.Point(502, 156)
+        Me.ChkSec23.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec23.Location = New System.Drawing.Point(602, 156)
         Me.ChkSec23.Name = "ChkSec23"
-        Me.ChkSec23.Size = New System.Drawing.Size(241, 24)
+        Me.ChkSec23.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec23.TabIndex = 93
         Me.ChkSec23.UseVisualStyleBackColor = True
         '
         'ChkSec24
         '
-        Me.ChkSec24.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkSec24.Location = New System.Drawing.Point(502, 176)
+        Me.ChkSec24.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec24.Location = New System.Drawing.Point(602, 176)
         Me.ChkSec24.Name = "ChkSec24"
-        Me.ChkSec24.Size = New System.Drawing.Size(241, 24)
+        Me.ChkSec24.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec24.TabIndex = 92
         Me.ChkSec24.UseVisualStyleBackColor = True
         '
         'ChkSec18
         '
-        Me.ChkSec18.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkSec18.Location = New System.Drawing.Point(502, 56)
+        Me.ChkSec18.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec18.Location = New System.Drawing.Point(602, 56)
         Me.ChkSec18.Name = "ChkSec18"
-        Me.ChkSec18.Size = New System.Drawing.Size(241, 24)
+        Me.ChkSec18.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec18.TabIndex = 91
         Me.ChkSec18.UseVisualStyleBackColor = True
         '
         'ChkSec19
         '
-        Me.ChkSec19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkSec19.Location = New System.Drawing.Point(502, 76)
+        Me.ChkSec19.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec19.Location = New System.Drawing.Point(602, 76)
         Me.ChkSec19.Name = "ChkSec19"
-        Me.ChkSec19.Size = New System.Drawing.Size(241, 24)
+        Me.ChkSec19.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec19.TabIndex = 90
         Me.ChkSec19.UseVisualStyleBackColor = True
         '
         'ChkSec20
         '
-        Me.ChkSec20.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkSec20.Location = New System.Drawing.Point(502, 96)
+        Me.ChkSec20.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec20.Location = New System.Drawing.Point(602, 96)
         Me.ChkSec20.Name = "ChkSec20"
-        Me.ChkSec20.Size = New System.Drawing.Size(241, 24)
+        Me.ChkSec20.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec20.TabIndex = 89
         Me.ChkSec20.UseVisualStyleBackColor = True
         '
         'ChkSec17
         '
-        Me.ChkSec17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkSec17.Location = New System.Drawing.Point(502, 36)
+        Me.ChkSec17.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec17.Location = New System.Drawing.Point(602, 36)
         Me.ChkSec17.Name = "ChkSec17"
-        Me.ChkSec17.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec17.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec17.TabIndex = 88
         Me.ChkSec17.UseVisualStyleBackColor = True
         '
         'ChkSec13
         '
-        Me.ChkSec13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkSec13.Location = New System.Drawing.Point(257, 116)
+        Me.ChkSec13.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec13.Location = New System.Drawing.Point(307, 116)
         Me.ChkSec13.Name = "ChkSec13"
-        Me.ChkSec13.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec13.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec13.TabIndex = 87
         Me.ChkSec13.UseVisualStyleBackColor = True
         '
         'ChkSec14
         '
-        Me.ChkSec14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkSec14.Location = New System.Drawing.Point(257, 136)
+        Me.ChkSec14.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec14.Location = New System.Drawing.Point(307, 136)
         Me.ChkSec14.Name = "ChkSec14"
-        Me.ChkSec14.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec14.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec14.TabIndex = 86
         Me.ChkSec14.UseVisualStyleBackColor = True
         '
         'ChkSec15
         '
-        Me.ChkSec15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkSec15.Location = New System.Drawing.Point(257, 156)
+        Me.ChkSec15.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec15.Location = New System.Drawing.Point(307, 156)
         Me.ChkSec15.Name = "ChkSec15"
-        Me.ChkSec15.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec15.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec15.TabIndex = 85
         Me.ChkSec15.UseVisualStyleBackColor = True
         '
         'ChkSec16
         '
-        Me.ChkSec16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkSec16.Location = New System.Drawing.Point(257, 176)
+        Me.ChkSec16.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec16.Location = New System.Drawing.Point(307, 176)
         Me.ChkSec16.Name = "ChkSec16"
-        Me.ChkSec16.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec16.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec16.TabIndex = 84
         Me.ChkSec16.UseVisualStyleBackColor = True
         '
         'ChkSec10
         '
-        Me.ChkSec10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkSec10.Location = New System.Drawing.Point(257, 56)
+        Me.ChkSec10.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec10.Location = New System.Drawing.Point(307, 56)
         Me.ChkSec10.Name = "ChkSec10"
-        Me.ChkSec10.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec10.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec10.TabIndex = 83
         Me.ChkSec10.UseVisualStyleBackColor = True
         '
         'ChkSec11
         '
-        Me.ChkSec11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkSec11.Location = New System.Drawing.Point(257, 76)
+        Me.ChkSec11.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec11.Location = New System.Drawing.Point(307, 76)
         Me.ChkSec11.Name = "ChkSec11"
-        Me.ChkSec11.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec11.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec11.TabIndex = 82
         Me.ChkSec11.UseVisualStyleBackColor = True
         '
         'ChkSec12
         '
-        Me.ChkSec12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkSec12.Location = New System.Drawing.Point(257, 96)
+        Me.ChkSec12.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec12.Location = New System.Drawing.Point(307, 96)
         Me.ChkSec12.Name = "ChkSec12"
-        Me.ChkSec12.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec12.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec12.TabIndex = 81
         Me.ChkSec12.UseVisualStyleBackColor = True
         '
         'ChkSec09
         '
-        Me.ChkSec09.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkSec09.Location = New System.Drawing.Point(257, 36)
+        Me.ChkSec09.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec09.Location = New System.Drawing.Point(307, 36)
         Me.ChkSec09.Name = "ChkSec09"
-        Me.ChkSec09.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec09.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec09.TabIndex = 80
         Me.ChkSec09.UseVisualStyleBackColor = True
         '
         'ChkSec05
         '
-        Me.ChkSec05.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec05.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec05.Location = New System.Drawing.Point(12, 116)
         Me.ChkSec05.Name = "ChkSec05"
-        Me.ChkSec05.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec05.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec05.TabIndex = 79
         Me.ChkSec05.UseVisualStyleBackColor = True
         '
         'ChkSec06
         '
-        Me.ChkSec06.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec06.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec06.Location = New System.Drawing.Point(12, 136)
         Me.ChkSec06.Name = "ChkSec06"
-        Me.ChkSec06.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec06.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec06.TabIndex = 78
         Me.ChkSec06.UseVisualStyleBackColor = True
         '
         'ChkSec07
         '
-        Me.ChkSec07.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec07.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec07.Location = New System.Drawing.Point(12, 156)
         Me.ChkSec07.Name = "ChkSec07"
-        Me.ChkSec07.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec07.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec07.TabIndex = 77
         Me.ChkSec07.UseVisualStyleBackColor = True
         '
         'ChkSec08
         '
-        Me.ChkSec08.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec08.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec08.Location = New System.Drawing.Point(12, 176)
         Me.ChkSec08.Name = "ChkSec08"
-        Me.ChkSec08.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec08.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec08.TabIndex = 76
         Me.ChkSec08.UseVisualStyleBackColor = True
         '
         'ChkSec02
         '
-        Me.ChkSec02.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec02.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec02.Location = New System.Drawing.Point(12, 56)
         Me.ChkSec02.Name = "ChkSec02"
-        Me.ChkSec02.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec02.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec02.TabIndex = 75
         Me.ChkSec02.UseVisualStyleBackColor = True
         '
         'ChkSec03
         '
-        Me.ChkSec03.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec03.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec03.Location = New System.Drawing.Point(12, 76)
         Me.ChkSec03.Name = "ChkSec03"
-        Me.ChkSec03.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec03.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec03.TabIndex = 74
         Me.ChkSec03.UseVisualStyleBackColor = True
         '
         'ChkSec04
         '
-        Me.ChkSec04.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec04.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec04.Location = New System.Drawing.Point(12, 96)
         Me.ChkSec04.Name = "ChkSec04"
-        Me.ChkSec04.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec04.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec04.TabIndex = 73
         Me.ChkSec04.UseVisualStyleBackColor = True
         '
         'ChkSec01
         '
-        Me.ChkSec01.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkSec01.Font = New System.Drawing.Font("Tahoma", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkSec01.Location = New System.Drawing.Point(12, 36)
         Me.ChkSec01.Name = "ChkSec01"
-        Me.ChkSec01.Size = New System.Drawing.Size(239, 24)
+        Me.ChkSec01.Size = New System.Drawing.Size(290, 24)
         Me.ChkSec01.TabIndex = 72
         Me.ChkSec01.UseVisualStyleBackColor = True
         '
@@ -966,7 +1020,7 @@ Partial Class IQ_P0001
         Me.Label2.ForeColor = System.Drawing.Color.White
         Me.Label2.Location = New System.Drawing.Point(12, 3)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(986, 30)
+        Me.Label2.Size = New System.Drawing.Size(1186, 30)
         Me.Label2.TabIndex = 59
         Me.Label2.Text = "Trámite Secundario"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -986,7 +1040,7 @@ Partial Class IQ_P0001
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1037, 521)
+        Me.ClientSize = New System.Drawing.Size(1237, 521)
         Me.ControlBox = False
         Me.Controls.Add(Me.PnlSecundario)
         Me.Controls.Add(Me.PnlPrimario)
@@ -1028,6 +1082,7 @@ Partial Class IQ_P0001
         CType(Me.Rojo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PnlPrimario.ResumeLayout(False)
         Me.PnlSecundario.ResumeLayout(False)
+        Me.PnlSecundario.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1119,5 +1174,10 @@ Partial Class IQ_P0001
     Friend WithEvents ChkSec03 As System.Windows.Forms.CheckBox
     Friend WithEvents ChkSec04 As System.Windows.Forms.CheckBox
     Friend WithEvents ChkSec01 As System.Windows.Forms.CheckBox
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents txtName1 As System.Windows.Forms.TextBox
+    Friend WithEvents txtNit1 As System.Windows.Forms.TextBox
 
 End Class

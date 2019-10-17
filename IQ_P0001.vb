@@ -32,9 +32,12 @@ Public Class IQ_P0001
     Private DsTramites As New DataSet
     Private DbTramites As System.Data.OleDb.OleDbDataAdapter = New System.Data.OleDb.OleDbDataAdapter
     Dim contadorAux As Integer = 0
-    Dim arrayValues() As String = {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"}
-    Dim arrayValuesAux() As Integer = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+    Dim arrayValues() As String = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""}
+    Dim arrayValuesAux() As String = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""}
+    Dim arrayCheck() As String = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""}
     Dim posArray As SByte = 0
+
+    Dim toogle As SByte = 0
     'Dim indice_primario As Integer
     Public Sub New()
 
@@ -1155,6 +1158,7 @@ Public Class IQ_P0001
             Me.TimerIdle.Enabled = False
             Me.TimerIdle.Stop()
         End If
+        clear()
     End Sub
     Private Sub Proceso_Espera()
         Dim Central_Cnn As New OleDb.OleDbConnection(Cnn_Central_Server)
@@ -1511,8 +1515,8 @@ Public Class IQ_P0001
             Verifica_Tramites = False
             Exit Function
         End If
-        If num_primarios > 6 Then
-            MessageBox.Show("NO PUEDE SELECCIONAR MAS DE UN TRAMITE PRIMARIO EFECTUADO POR EL TICKET", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        If num_primarios > 3 Then
+            MessageBox.Show("NO PUEDE SELECCIONAR MAS DE 3 TRAMITES PRIMARIOS EFECTUADOS POR EL TICKET", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Verifica_Tramites = False
             Exit Function
         End If
@@ -2908,74 +2912,102 @@ nuevamente:
         If Me.ChkPrim01.Checked Then
             aux("PBD")
             Me.arrayValues(posArray) = "PBD"
-            posArray +=
+            posArray += 1
         Else
-            'cleanSecon()
-            auxErase("PBD")
-             posArray -=
+            'auxErase("PBD")
+            'setArrayCheck()
+            uncheckFunc("PBD")
+
+
         End If
     End Sub
     Private Sub ChkPrim02_CheckedChanged(sender As Object, e As EventArgs) Handles ChkPrim02.CheckedChanged
-        'If checkAllCell() Then
         If Me.ChkPrim02.Checked Then
-            ' cleanSecon()
             aux("ST")
+            Me.arrayValues(posArray) = "ST"
+            posArray += 1
         Else
-            'cleanSecon()
-            auxErase("ST")
+            'auxErase("ST")
+            'setArrayCheck()
+            uncheckFunc("ST")
         End If
 
 
     End Sub
     Private Sub ChkPrim03_CheckedChanged(sender As Object, e As EventArgs) Handles ChkPrim03.CheckStateChanged
         If Me.ChkPrim03.Checked Then
-            'cleanSecon()
             aux("SF")
+            Me.arrayValues(posArray) = "SF"
+            posArray += 1
         Else
-            'cleanSecon()
-            auxErase("SF")
+            'auxErase("SF")
+            'setArrayCheck()
+            uncheckFunc("SF")
         End If
     End Sub
     Private Sub ChkPrim04_CheckedChanged(sender As Object, e As EventArgs) Handles ChkPrim04.CheckStateChanged
         If Me.ChkPrim04.Checked Then
-            'cleanSecon()
             aux("ERO")
+            Me.arrayValues(posArray) = "ERO"
+            posArray += 1
         Else
-            'cleanSecon()
-            auxErase("ERO")
+            'auxErase("ERO")
+            'setArrayCheck()
+            uncheckFunc("ERO")
         End If
     End Sub
     Private Sub ChkPrim05_CheckedChanged(sender As Object, e As EventArgs) Handles ChkPrim05.CheckStateChanged
         If Me.ChkPrim05.Checked Then
-            'cleanSecon()
             aux("DJ")
+            Me.arrayValues(posArray) = "DJ"
+            posArray += 1
         Else
-            'cleanSecon()
-            auxErase("DJ")
+            'auxErase("DJ")
+            'setArrayCheck()
+            uncheckFunc("DJ")
         End If
     End Sub
     Private Sub ChkPrim06_CheckedChanged(sender As Object, e As EventArgs) Handles ChkPrim06.CheckedChanged
         If Me.ChkPrim06.Checked Then
-            'cleanSecon()
             aux("NRT")
+            Me.arrayValues(posArray) = "NRT"
+            posArray += 1
         Else
-            'cleanSecon()
-            auxErase("NRT")
+            'auxErase("NRT")
+            setArrayCheck()
+            uncheckFunc("NRT")
         End If
     End Sub
     Private Sub ChkPrim07_CheckedChanged(sender As Object, e As EventArgs) Handles ChkPrim07.CheckedChanged
         If Me.ChkPrim07.Checked Then
-            'cleanSecon()
             aux("PTE")
+            Me.arrayValues(posArray) = "PTE"
+            posArray += 1
         Else
-            'cleanSecon()
-            auxErase("PTE")
+            'auxErase("PTE")
+            setArrayCheck()
+            uncheckFunc("PTE")
         End If
     End Sub
 
     Private Sub aux(ByVal Codigo As String)
+
+        If toogle = 1 Then
+            toogle = 0
+        Else
+            toogle = 1
+        End If
         Dim indice_primario As Integer = contadorAux
         'Dim indice_secundario As Integer = contadorAux
+        Dim backColor As Color
+        If toogle = 0 Then
+            backColor = Color.FromArgb(160, 160, 255)
+        Else
+            backColor = Color.FromArgb(192, 192, 255)
+        End If
+
+
+
         For indice_busqueda = 0 To DsTramites.Tables("Iq_TipTram").Rows.Count - 1
             If DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Ticket") = Codigo Then
                 indice_primario += 1
@@ -2984,99 +3016,131 @@ nuevamente:
                     Case 1
                         Me.ChkSec01.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec01.Visible = True
+                        Me.ChkSec01.BackColor = backColor
                     Case 2
                         Me.ChkSec02.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec02.Visible = True
+                        Me.ChkSec02.BackColor = backColor
                     Case 3
                         Me.ChkSec03.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec03.Visible = True
+                        Me.ChkSec03.BackColor = backColor
                     Case 4
                         Me.ChkSec04.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec04.Visible = True
+                        Me.ChkSec04.BackColor = backColor
                     Case 5
                         Me.ChkSec05.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec05.Visible = True
+                        Me.ChkSec05.BackColor = backColor
                     Case 6
                         Me.ChkSec06.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec06.Visible = True
+                        Me.ChkSec06.BackColor = backColor
                     Case 7
                         Me.ChkSec07.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec07.Visible = True
+                        Me.ChkSec07.BackColor = backColor
                     Case 8
                         Me.ChkSec08.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec08.Visible = True
+                        Me.ChkSec08.BackColor = backColor
                     Case 9
                         Me.ChkSec09.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec09.Visible = True
+                        Me.ChkSec09.BackColor = backColor
                     Case 10
                         Me.ChkSec10.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec10.Visible = True
+                        Me.ChkSec10.BackColor = backColor
                     Case 11
                         Me.ChkSec11.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec11.Visible = True
+                        Me.ChkSec11.BackColor = backColor
                     Case 12
                         Me.ChkSec12.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec12.Visible = True
+                        Me.ChkSec12.BackColor = backColor
                     Case 13
                         Me.ChkSec13.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec13.Visible = True
+                        Me.ChkSec13.BackColor = backColor
                     Case 14
                         Me.ChkSec14.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec14.Visible = True
+                        Me.ChkSec14.BackColor = backColor
                     Case 15
                         Me.ChkSec15.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec15.Visible = True
+                        Me.ChkSec15.BackColor = backColor
                     Case 16
                         Me.ChkSec16.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec16.Visible = True
+                        Me.ChkSec16.BackColor = backColor
                     Case 17
                         Me.ChkSec17.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec17.Visible = True
+                        Me.ChkSec17.BackColor = backColor
                     Case 18
                         Me.ChkSec18.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec18.Visible = True
+                        Me.ChkSec18.BackColor = backColor
                     Case 19
                         Me.ChkSec19.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec19.Visible = True
+                        Me.ChkSec19.BackColor = backColor
                     Case 20
                         Me.ChkSec20.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec20.Visible = True
+                        Me.ChkSec20.BackColor = backColor
                     Case 21
                         Me.ChkSec21.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec21.Visible = True
+                        Me.ChkSec21.BackColor = backColor
                     Case 22
                         Me.ChkSec22.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec22.Visible = True
+                        Me.ChkSec22.BackColor = backColor
                     Case 23
                         Me.ChkSec23.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec23.Visible = True
+                        Me.ChkSec23.BackColor = backColor
                     Case 24
                         Me.ChkSec24.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec24.Visible = True
+                        Me.ChkSec24.BackColor = backColor
                     Case 25
                         Me.ChkSec25.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec25.Visible = True
+                        Me.ChkSec25.BackColor = backColor
                     Case 26
                         Me.ChkSec26.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec26.Visible = True
+                        Me.ChkSec26.BackColor = backColor
                     Case 27
                         Me.ChkSec27.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec27.Visible = True
+                        Me.ChkSec27.BackColor = backColor
                     Case 28
                         Me.ChkSec28.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec28.Visible = True
+                        Me.ChkSec28.BackColor = backColor
                     Case 29
                         Me.ChkSec29.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec29.Visible = True
+                        Me.ChkSec29.BackColor = backColor
                     Case 30
                         Me.ChkSec30.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec30.Visible = True
+                        Me.ChkSec30.BackColor = backColor
                     Case 31
                         Me.ChkSec31.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec31.Visible = True
+                        Me.ChkSec31.BackColor = backColor
                     Case 32
                         Me.ChkSec32.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
                         Me.ChkSec32.Visible = True
+                        Me.ChkSec32.BackColor = backColor
                 End Select
             End If
 
@@ -3157,6 +3221,39 @@ nuevamente:
         Me.ChkSec30.CheckState = 0
         Me.ChkSec31.CheckState = 0
         Me.ChkSec32.CheckState = 0
+
+        Me.ChkSec01.Text = ""
+        Me.ChkSec02.Text = ""
+        Me.ChkSec03.Text = ""
+        Me.ChkSec04.Text = ""
+        Me.ChkSec05.Text = ""
+        Me.ChkSec06.Text = ""
+        Me.ChkSec07.Text = ""
+        Me.ChkSec08.Text = ""
+        Me.ChkSec09.Text = ""
+        Me.ChkSec10.Text = ""
+        Me.ChkSec11.Text = ""
+        Me.ChkSec12.Text = ""
+        Me.ChkSec13.Text = ""
+        Me.ChkSec14.Text = ""
+        Me.ChkSec15.Text = ""
+        Me.ChkSec16.Text = ""
+        Me.ChkSec17.Text = ""
+        Me.ChkSec18.Text = ""
+        Me.ChkSec19.Text = ""
+        Me.ChkSec20.Text = ""
+        Me.ChkSec21.Text = ""
+        Me.ChkSec22.Text = ""
+        Me.ChkSec23.Text = ""
+        Me.ChkSec24.Text = ""
+        Me.ChkSec25.Text = ""
+        Me.ChkSec26.Text = ""
+        Me.ChkSec27.Text = ""
+        Me.ChkSec28.Text = ""
+        Me.ChkSec29.Text = ""
+        Me.ChkSec30.Text = ""
+        Me.ChkSec31.Text = ""
+        Me.ChkSec32.Text = ""
     End Sub
 
     Private Sub ChkPrim01_CheckedChanged_1(sender As Object, e As EventArgs) Handles ChkPrim01.CheckedChanged
@@ -3182,7 +3279,7 @@ nuevamente:
         'Dim indice_secundario As Integer = contadorAux
         For indice_busqueda = 0 To DsTramites.Tables("Iq_TipTram").Rows.Count - 1
             If DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Ticket") = Codigo Then
-                
+
                 Select Case indice_primario
                     Case 1
                         Me.ChkSec01.Text = DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")
@@ -3287,13 +3384,718 @@ nuevamente:
 
         Next
     End Sub
-    Private Sub uncheckFunc()
+    Private Sub uncheckFunc(p1 As String)
+        posArray -= 1
         For Indice_Ips = 0 To 15
-            Me.arrayValues(0) = ""
+            If Me.arrayValues(Indice_Ips) = p1 Then
+                Me.arrayValues(Indice_Ips) = ""
+                setArrayChkSecond()
+                'ChkSec10
+            End If
+        Next
+
+    End Sub
+
+    Private Sub setArrayChkSecond()
+        Dim countAux As Integer = 0
+        For Indice_Ips = 0 To 15
+            If Me.arrayValues(Indice_Ips) = "" Then
+            Else
+                Me.arrayValuesAux(countAux) = Me.arrayValues(Indice_Ips)
+                countAux += 1
+            End If
+            Me.arrayValues(Indice_Ips) = ""
+        Next
+        countAux = 0
+        saveChckSec()
+        cleanSecon()
+        For Indice_Ips = 0 To 15
+            If Me.arrayValuesAux(Indice_Ips) = "" Then
+            Else
+                Me.arrayValues(countAux) = Me.arrayValuesAux(Indice_Ips)
+                aux(Me.arrayValues(countAux))
+                countAux += 1
+            End If
+            Me.arrayValuesAux(Indice_Ips) = ""
+        Next
+        setCheckSecArray()
+        For indice = 1 To 32
+            Me.arrayCheck(indice) = ""
+        Next
+        countAux = 0
+    End Sub
+
+    Private Sub setArrayCheck()
+
+        Dim indice_tramites As Integer = 0
+
+        For indice = 1 To 32
+            Select Case indice
+                Case 1
+                    If Me.ChkSec01.Visible = True Then
+                        If Me.ChkSec01.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec01.Text
+                        End If
+                    End If
+                Case 2
+                    If Me.ChkSec02.Visible = True Then
+                        If Me.ChkSec02.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec02.Text
+                        End If
+                    End If
+                Case 3
+                    If Me.ChkSec03.Visible = True Then
+                        If Me.ChkSec03.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec03.Text
+                        End If
+                    End If
+                Case 4
+                    If Me.ChkSec04.Visible = True Then
+                        If Me.ChkSec04.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec04.Text
+                        End If
+                    End If
+                Case 5
+                    If Me.ChkSec05.Visible = True Then
+                        If Me.ChkSec05.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec05.Text
+                        End If
+                    End If
+                Case 6
+                    If Me.ChkSec06.Visible = True Then
+                        If Me.ChkSec06.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec06.Text
+                        End If
+                    End If
+                Case 7
+                    If Me.ChkSec07.Visible = True Then
+                        If Me.ChkSec07.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec07.Text
+                        End If
+                    End If
+                Case 8
+                    If Me.ChkSec08.Visible = True Then
+                        If Me.ChkSec08.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec08.Text
+                        End If
+                    End If
+                Case 9
+                    If Me.ChkSec09.Visible = True Then
+                        If Me.ChkSec09.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec09.Text
+                        End If
+                    End If
+                Case 10
+                    If Me.ChkSec10.Visible = True Then
+                        If Me.ChkSec10.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec10.Text
+                        End If
+                    End If
+                Case 11
+                    If Me.ChkSec11.Visible = True Then
+                        If Me.ChkSec11.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec11.Text
+                        End If
+                    End If
+                Case 12
+                    If Me.ChkSec12.Visible = True Then
+                        If Me.ChkSec12.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec12.Text
+                        End If
+                    End If
+                Case 13
+                    If Me.ChkSec13.Visible = True Then
+                        If Me.ChkSec13.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec13.Text
+                        End If
+                    End If
+                Case 14
+                    If Me.ChkSec14.Visible = True Then
+                        If Me.ChkSec14.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec14.Text
+                        End If
+                    End If
+                Case 15
+                    If Me.ChkSec15.Visible = True Then
+                        If Me.ChkSec15.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec15.Text
+                        End If
+                    End If
+                Case 16
+                    If Me.ChkSec16.Visible = True Then
+                        If Me.ChkSec16.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec16.Text
+                        End If
+                    End If
+                Case 17
+                    If Me.ChkSec17.Visible = True Then
+                        If Me.ChkSec17.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec17.Text
+                        End If
+                    End If
+                Case 18
+                    If Me.ChkSec18.Visible = True Then
+                        If Me.ChkSec18.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec18.Text
+                        End If
+                    End If
+                Case 19
+                    If Me.ChkSec19.Visible = True Then
+                        If Me.ChkSec19.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec19.Text
+                        End If
+                    End If
+                Case 20
+                    If Me.ChkSec20.Visible = True Then
+                        If Me.ChkSec20.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec20.Text
+                        End If
+                    End If
+                Case 21
+                    If Me.ChkSec21.Visible = True Then
+                        If Me.ChkSec21.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec21.Text
+                        End If
+                    End If
+                Case 22
+                    If Me.ChkSec22.Visible = True Then
+                        If Me.ChkSec22.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec22.Text
+                        End If
+                    End If
+                Case 23
+                    If Me.ChkSec23.Visible = True Then
+                        If Me.ChkSec23.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec23.Text
+                        End If
+                    End If
+                Case 24
+                    If Me.ChkSec24.Visible = True Then
+                        If Me.ChkSec24.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec24.Text
+                        End If
+                    End If
+                Case 25
+                    If Me.ChkSec25.Visible = True Then
+                        If Me.ChkSec25.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec25.Text
+                        End If
+                    End If
+                Case 26
+                    If Me.ChkSec26.Visible = True Then
+                        If Me.ChkSec26.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec26.Text
+                        End If
+                    End If
+                Case 27
+                    If Me.ChkSec27.Visible = True Then
+                        If Me.ChkSec27.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec27.Text
+                        End If
+                    End If
+                Case 28
+                    If Me.ChkSec28.Visible = True Then
+                        If Me.ChkSec28.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec28.Text
+                        End If
+                    End If
+                Case 29
+                    If Me.ChkSec29.Visible = True Then
+                        If Me.ChkSec29.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec29.Text
+                        End If
+                    End If
+                Case 30
+                    If Me.ChkSec30.Visible = True Then
+                        If Me.ChkSec30.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec30.Text
+                        End If
+                    End If
+                Case 31
+                    If Me.ChkSec31.Visible = True Then
+                        If Me.ChkSec31.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec31.Text
+                        End If
+                    End If
+                Case 32
+                    If Me.ChkSec32.Visible = True Then
+                        If Me.ChkSec32.Checked = True Then
+                            indice_tramites += 1
+                            arrayCheck(indice_tramites) = Me.ChkSec32.Text
+                        End If
+                    End If
+            End Select
+
+        Next
+    End Sub
+    Private Function setCheck(p1 As String) As Boolean
+        Dim vert As Boolean = False
+        For indice = 1 To 32
+            If arrayCheck(indice) = p1 Then
+                vert = True
+                Exit For
+            End If
+        Next
+        Return vert
+    End Function
+
+    Private Sub saveChckSec()
+
+        For indice = 1 To 32
+            Me.arrayCheck(indice) = ""
+        Next
+        Dim indice_array As Integer = 0
+        For indice = 1 To 32
+            Select Case indice
+                Case 1
+                    If Me.ChkSec01.Visible = True Then
+                        If Me.ChkSec01.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec01.Text
+                        End If
+                    End If
+                Case 2
+                    If Me.ChkSec02.Visible = True Then
+                        If Me.ChkSec02.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec02.Text
+                        End If
+                    End If
+                Case 3
+                    If Me.ChkSec03.Visible = True Then
+                        If Me.ChkSec03.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec03.Text
+                        End If
+                    End If
+                Case 4
+                    If Me.ChkSec04.Visible = True Then
+                        If Me.ChkSec04.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec04.Text
+                        End If
+                    End If
+                Case 5
+                    If Me.ChkSec05.Visible = True Then
+                        If Me.ChkSec05.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec05.Text
+                        End If
+                    End If
+                Case 6
+                    If Me.ChkSec06.Visible = True Then
+                        If Me.ChkSec06.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec06.Text
+                        End If
+                    End If
+                Case 7
+                    If Me.ChkSec07.Visible = True Then
+                        If Me.ChkSec07.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec07.Text
+                        End If
+                    End If
+                Case 8
+                    If Me.ChkSec08.Visible = True Then
+                        If Me.ChkSec08.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec08.Text
+                        End If
+                    End If
+                Case 9
+                    If Me.ChkSec09.Visible = True Then
+                        If Me.ChkSec09.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec09.Text
+                        End If
+                    End If
+                Case 10
+                    If Me.ChkSec10.Visible = True Then
+                        If Me.ChkSec10.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec10.Text
+                        End If
+                    End If
+                Case 11
+                    If Me.ChkSec11.Visible = True Then
+                        If Me.ChkSec11.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec11.Text
+                        End If
+                    End If
+                Case 12
+                    If Me.ChkSec12.Visible = True Then
+                        If Me.ChkSec12.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec12.Text
+                        End If
+                    End If
+                Case 13
+                    If Me.ChkSec13.Visible = True Then
+                        If Me.ChkSec13.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec13.Text
+                        End If
+                    End If
+                Case 14
+                    If Me.ChkSec14.Visible = True Then
+                        If Me.ChkSec14.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec14.Text
+                        End If
+                    End If
+                Case 15
+                    If Me.ChkSec15.Visible = True Then
+                        If Me.ChkSec15.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec15.Text
+                        End If
+                    End If
+                Case 16
+                    If Me.ChkSec16.Visible = True Then
+                        If Me.ChkSec16.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec16.Text
+                        End If
+                    End If
+                Case 17
+                    If Me.ChkSec17.Visible = True Then
+                        If Me.ChkSec17.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec17.Text
+                        End If
+                    End If
+                Case 18
+                    If Me.ChkSec18.Visible = True Then
+                        If Me.ChkSec18.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec18.Text
+                        End If
+                    End If
+                Case 19
+                    If Me.ChkSec19.Visible = True Then
+                        If Me.ChkSec19.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec19.Text
+                        End If
+                    End If
+                Case 20
+                    If Me.ChkSec20.Visible = True Then
+                        If Me.ChkSec20.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec20.Text
+                        End If
+                    End If
+                Case 21
+                    If Me.ChkSec21.Visible = True Then
+                        If Me.ChkSec21.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec21.Text
+                        End If
+                    End If
+                Case 22
+                    If Me.ChkSec22.Visible = True Then
+                        If Me.ChkSec22.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec22.Text
+                        End If
+                    End If
+                Case 23
+                    If Me.ChkSec23.Visible = True Then
+                        If Me.ChkSec23.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec23.Text
+                        End If
+                    End If
+                Case 24
+                    If Me.ChkSec24.Visible = True Then
+                        If Me.ChkSec24.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec24.Text
+                        End If
+                    End If
+                Case 25
+                    If Me.ChkSec25.Visible = True Then
+                        If Me.ChkSec25.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec25.Text
+                        End If
+                    End If
+                Case 26
+                    If Me.ChkSec26.Visible = True Then
+                        If Me.ChkSec26.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec26.Text
+                        End If
+                    End If
+                Case 27
+                    If Me.ChkSec27.Visible = True Then
+                        If Me.ChkSec27.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec27.Text
+                        End If
+                    End If
+                Case 28
+                    If Me.ChkSec28.Visible = True Then
+                        If Me.ChkSec28.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec28.Text
+                        End If
+                    End If
+                Case 29
+                    If Me.ChkSec29.Visible = True Then
+                        If Me.ChkSec29.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec29.Text
+                        End If
+                    End If
+                Case 30
+                    If Me.ChkSec30.Visible = True Then
+                        If Me.ChkSec30.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec30.Text
+                        End If
+                    End If
+                Case 31
+                    If Me.ChkSec31.Visible = True Then
+                        If Me.ChkSec31.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec31.Text
+                        End If
+                    End If
+                Case 32
+                    If Me.ChkSec32.Visible = True Then
+                        If Me.ChkSec32.Checked = True Then
+                            indice_array += 1
+                            arrayCheck(indice_array) = Me.ChkSec32.Text
+                        End If
+                    End If
+            End Select
 
         Next
     End Sub
 
+    Private Sub setCheckSecArray()
+        For indice = 1 To 32
+            Select Case indice
+                Case 1
+                    If revisarCheck(Me.ChkSec01.Text) Then
+                        Me.ChkSec01.CheckState = 1
+                    End If
+                Case 2
+                    If revisarCheck(Me.ChkSec02.Text) Then
+                        Me.ChkSec02.CheckState = 1
+                    End If
+                Case 3
+                    If revisarCheck(Me.ChkSec03.Text) Then
+                        Me.ChkSec03.CheckState = 1
+                    End If
+                Case 4
+                    If revisarCheck(Me.ChkSec04.Text) Then
+                        Me.ChkSec04.CheckState = 1
+                    End If
+                Case 5
+                    If revisarCheck(Me.ChkSec05.Text) Then
+                        Me.ChkSec05.CheckState = 1
+                    End If
+                Case 6
+                    If revisarCheck(Me.ChkSec06.Text) Then
+                        Me.ChkSec06.CheckState = 1
+                    End If
+                Case 7
+                    If revisarCheck(Me.ChkSec07.Text) Then
+                        Me.ChkSec07.CheckState = 1
+                    End If
+                Case 8
+                    If revisarCheck(Me.ChkSec08.Text) Then
+                        Me.ChkSec08.CheckState = 1
+                    End If
+                Case 9
+                    If revisarCheck(Me.ChkSec09.Text) Then
+                        Me.ChkSec09.CheckState = 1
+                    End If
+                Case 10
+                    If revisarCheck(Me.ChkSec10.Text) Then
+                        Me.ChkSec10.CheckState = 1
+                    End If
+                Case 11
+                    If revisarCheck(Me.ChkSec11.Text) Then
+                        Me.ChkSec11.CheckState = 1
+                    End If
+                Case 12
+                    If revisarCheck(Me.ChkSec12.Text) Then
+                        Me.ChkSec12.CheckState = 1
+                    End If
+                Case 13
+                    If revisarCheck(Me.ChkSec13.Text) Then
+                        Me.ChkSec13.CheckState = 1
+                    End If
+                Case 14
+                    If revisarCheck(Me.ChkSec14.Text) Then
+                        Me.ChkSec14.CheckState = 1
+                    End If
+                Case 15
+                    If revisarCheck(Me.ChkSec15.Text) Then
+                        Me.ChkSec15.CheckState = 1
+                    End If
+                Case 16
+                    If revisarCheck(Me.ChkSec16.Text) Then
+                        Me.ChkSec16.CheckState = 1
+                    End If
+                Case 17
+                    If revisarCheck(Me.ChkSec17.Text) Then
+                        Me.ChkSec17.CheckState = 1
+                    End If
+                Case 18
+                    If revisarCheck(Me.ChkSec18.Text) Then
+                        Me.ChkSec18.CheckState = 1
+                    End If
+                Case 19
+                    If revisarCheck(Me.ChkSec19.Text) Then
+                        Me.ChkSec19.CheckState = 1
+                    End If
+                Case 20
+                    If revisarCheck(Me.ChkSec20.Text) Then
+                        Me.ChkSec20.CheckState = 1
+                    End If
+                Case 21
+                    If revisarCheck(Me.ChkSec21.Text) Then
+                        Me.ChkSec21.CheckState = 1
+                    End If
+                Case 22
+                    If revisarCheck(Me.ChkSec22.Text) Then
+                        Me.ChkSec22.CheckState = 1
+                    End If
+                Case 23
+                    If revisarCheck(Me.ChkSec23.Text) Then
+                        Me.ChkSec23.CheckState = 1
+                    End If
+                Case 24
+                    If revisarCheck(Me.ChkSec24.Text) Then
+                        Me.ChkSec24.CheckState = 1
+                    End If
+                Case 25
+                    If revisarCheck(Me.ChkSec25.Text) Then
+                        Me.ChkSec25.CheckState = 1
+                    End If
+                Case 26
+                    If revisarCheck(Me.ChkSec26.Text) Then
+                        Me.ChkSec26.CheckState = 1
+                    End If
+                Case 27
+                    If revisarCheck(Me.ChkSec27.Text) Then
+                        Me.ChkSec27.CheckState = 1
+                    End If
+                Case 28
+                    If revisarCheck(Me.ChkSec28.Text) Then
+                        Me.ChkSec28.CheckState = 1
+                    End If
+                Case 29
+                    If revisarCheck(Me.ChkSec29.Text) Then
+                        Me.ChkSec29.CheckState = 1
+                    End If
+                Case 30
+                    If revisarCheck(Me.ChkSec30.Text) Then
+                        Me.ChkSec30.CheckState = 1
+                    End If
+                Case 31
+                    If revisarCheck(Me.ChkSec31.Text) Then
+                        Me.ChkSec31.CheckState = 1
+                    End If
+                Case 32
+                    If revisarCheck(Me.ChkSec32.Text) Then
+                        Me.ChkSec32.CheckState = 1
+                    End If
+            End Select
+
+        Next
+    End Sub
+
+    Private Function revisarCheck(p1 As String) As Boolean
+        Dim vert As Boolean = False
+        For indice = 1 To 32
+            If arrayCheck(indice) = p1 And arrayCheck(indice) <> "" Then
+                vert = True
+                Exit For
+            End If
+        Next
+        Return vert
+    End Function
+
+    Private Sub btnGName_Click(sender As Object, e As EventArgs)
+        Dim instruccion_insert As String = ""
+        instruccion_insert = "Update Iq_Tickets Set IQTicket_NIT =   '" & txtNit1.Text & "' , IQTicket_Nombre = '" & txtName1.Text & "' where IQTicket_Area = '" & Area_Ticket & "' and IQTicket_Ticket = '" & Me.LblTicket.Text & "' And IQTicket_Estado = 'P' and IQTicket_Fecha = CONVERT(varchar(10), getdate(), 111)"
+        Try
+            Dim IQ_Cnn As New OleDb.OleDbConnection(Cnn_Central_Server)
+            IQ_Cnn.Open()
+            Dim IQ_Cmm As New OleDb.OleDbCommand(instruccion_insert, IQ_Cnn)
+            Dim RegistrosInsertados As Long = IQ_Cmm.ExecuteNonQuery()
+            IQ_Cnn.Close()
+        Catch exc As Exception
+            Dim Mensaje_Excepcion As String
+            Mensaje_Excepcion = exc.Message
+            MessageBox.Show(Mensaje_Excepcion, Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        End Try
+    End Sub
+
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+        If txtNit1.Text = "" And txtName1.Text = "" Then
+            MessageBox.Show("No hay datos para guardar")
+        Else
+            Dim instruccion_insert As String = ""
+            instruccion_insert = "Update Iq_Tickets Set IQTicket_NIT =   '" & txtNit1.Text & "' , IQTicket_Nombre = '" & txtName1.Text & "' where IQTicket_Area = '" & Area_Ticket & "' and IQTicket_Ticket = '" & Me.LblTicket.Text & "' And IQTicket_Estado = 'P' and IQTicket_Fecha = CONVERT(varchar(10), getdate(), 111)"
+            Try
+                Dim IQ_Cnn As New OleDb.OleDbConnection(Cnn_Central_Server)
+                IQ_Cnn.Open()
+                Dim IQ_Cmm As New OleDb.OleDbCommand(instruccion_insert, IQ_Cnn)
+                Dim RegistrosInsertados As Long = IQ_Cmm.ExecuteNonQuery()
+                IQ_Cnn.Close()
+                MessageBox.Show("Se Guardó de Manera Correcta el" + vbCr + "NIT:" + txtNit1.Text + vbCr + "Nombre:" + txtName1.Text)
+            Catch exc As Exception
+                Dim Mensaje_Excepcion As String
+                Mensaje_Excepcion = exc.Message
+                MessageBox.Show(Mensaje_Excepcion, Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                Exit Sub
+            End Try
+        End If
+    End Sub
+    Private Sub clear()
+        txtNit1.Text = ""
+        txtName1.Text = ""
+    End Sub
 End Class
 
 
