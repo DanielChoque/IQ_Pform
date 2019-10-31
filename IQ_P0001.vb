@@ -36,8 +36,9 @@ Public Class IQ_P0001
     Dim arrayValuesAux() As String = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""}
     Dim arrayCheck() As String = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""}
     Dim posArray As SByte = 0
-
+    Dim Cnn_Central_Server_1 As String
     Dim toogle As SByte = 0
+    Dim toogleCall As SByte = 0
     'Dim indice_primario As Integer
     Public Sub New()
 
@@ -368,7 +369,9 @@ Public Class IQ_P0001
                 Me.LabelNonShow.Visible = False
                 Me.LabelRedirect.Visible = True
                 Me.LabelRetorno.Visible = True
-                Carga_Tramites(Mid(Carga_Reader_O2.GetValue(1), 1, 3))
+                'Carga_Tramites(Mid(Carga_Reader_O2.GetValue(1), 1, 3))
+
+                Carga_Tramites("SAC")
                 Me.LblTicket.Text = Carga_Reader_O2.GetValue(1)
                 Me.LblTicket.Visible = True
                 Area_Ticket = Carga_Reader_O2.GetValue(0)
@@ -1057,7 +1060,14 @@ Public Class IQ_P0001
             If Verifica_Tramites() = False Then
                 Exit Sub
             End If
-            Graba_Tramites()
+            If toogleCall = 1 Then
+                Graba_Tramites2()
+                toogleCall = 0
+                Me.LblAmarillo.Text = "en llamada"
+            Else
+                toogleCall = 0
+                Graba_Tramites()
+            End If
         End If
         Dim Central_Cnn As New OleDb.OleDbConnection(Cnn_Central_Server)
         Dim CmmCentral As New OleDb.OleDbCommand("", Central_Cnn)
@@ -1121,6 +1131,11 @@ Public Class IQ_P0001
             Me.TimerWait.Start()
             Me.TimerSearch.Enabled = False
             Me.TimerSearch.Stop()
+            Me.txtName1.Visible = True
+            Me.txtNit1.Visible = True
+            Me.Button1.Visible = True
+            Me.lblNit.Visible = True
+            Me.lblName.Visible = True
         Else
             Me.Rojo.Visible = False
             Me.LblRojo.Visible = False
@@ -1157,6 +1172,11 @@ Public Class IQ_P0001
             Me.TimerSearch.Start()
             Me.TimerIdle.Enabled = False
             Me.TimerIdle.Stop()
+            Me.txtName1.Visible = False
+            Me.txtNit1.Visible = False
+            Me.Button1.Visible = False
+            Me.lblNit.Visible = False
+            Me.lblName.Visible = False
         End If
         clear()
     End Sub
@@ -4095,6 +4115,517 @@ nuevamente:
     Private Sub clear()
         txtNit1.Text = ""
         txtName1.Text = ""
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim s As New Registros
+        s.recarga(Cnn_Central_Server, Computer_Code)
+        s.Show()
+    End Sub
+
+
+    Private Sub btnPhone_Click(sender As Object, e As EventArgs) Handles btnPhone.Click
+        Proceso_AusenteLL()
+        Carga_Tramites("SAC")
+        toogleCall = 1
+    End Sub
+    Private Sub Proceso_AusenteLL()
+        Dim justificativo As String = ""
+        Me.TimerWait.Enabled = False
+        Me.TimerWait.Stop()
+        ' Do Until justificativo <> ""
+        'justificativo = InputBox("Ingrese por favor el Justificativo de Llamada", "")
+        'Loop
+        justificativo = "6c7afada99e4170ca0c400e54c1540bcd334578ff2ec993ef2aa3c771143384f"
+        If UCase(justificativo) = "X" Then
+            Me.TimerWait.Enabled = True
+            Me.TimerWait.Start()
+            Exit Sub
+        End If
+        If Me.PnlPrimario.Visible = True Then
+            If Verifica_Tramites() = False Then
+                Exit Sub
+            End If
+            Graba_Tramites()
+        End If
+        Dim Central_Cnn As New OleDb.OleDbConnection(Cnn_Central_Server)
+        Dim CmmCentral As New OleDb.OleDbCommand("", Central_Cnn)
+        CmmCentral.CommandTimeout = 0
+        CmmCentral.CommandType = CommandType.StoredProcedure
+        CmmCentral.CommandText = "IQ_SpPlataforma"
+        CmmCentral.Parameters.Add("CodStation", OleDbType.VarChar, 19).Value = Computer_Code
+        CmmCentral.Parameters.Add("Station", OleDbType.VarChar, 6).Value = Computer_Sigla
+        CmmCentral.Parameters.Add("Area", OleDbType.VarChar, 19).Value = Computer_Area
+        CmmCentral.Parameters.Add("Action", OleDbType.VarChar, 1).Value = "A"
+        CmmCentral.Parameters.Add("Parameter", OleDbType.VarChar, 100).Value = Me.LblTicket.Text & "|" & justificativo
+        CmmCentral.Parameters.Add("Area_Ticket", OleDbType.VarChar, 19).Value = Area_Ticket
+        CmmCentral.Parameters.Add("Resultado", OleDbType.VarChar, 100).Direction = ParameterDirection.Output
+        Dim resultado As String = ""
+        Try
+            Central_Cnn.Open()
+            CmmCentral.ExecuteNonQuery()
+            resultado = CmmCentral.Parameters("Resultado").Value
+            Central_Cnn.Close()
+        Catch exc As Exception
+            Dim Mensaje_Excepcion As String
+            Mensaje_Excepcion = exc.Message
+            MessageBox.Show("Error Integrado: " + Mensaje_Excepcion, Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End Try
+        Me.Rojo.Visible = True
+        Me.LblRojo.Visible = True
+        Me.Amarillo.Visible = False
+        Me.LblAmarillo.Visible = False
+        Me.Verde.Visible = False
+        Me.Lblverde.Visible = False
+        Me.ButtonLibre.Visible = True
+        Me.ButtonAtender.Visible = False
+        Me.BtnBell.Visible = False
+        Me.PnlPrimario.Visible = False
+        Me.PnlSecundario.Visible = False
+        Me.TimerSearch.Enabled = False
+        Me.TimerSearch.Stop()
+        Me.TimerIdle.Enabled = False
+        Me.TimerIdle.Stop()
+        Me.LstEspera.Visible = True
+        Me.LstEspera.Enabled = True
+        Me.ButtonAusente.Visible = False
+        Me.ButtonEspera.Visible = False
+        Me.ButtonNonShow.Visible = False
+        Me.ButtonRedirect.Visible = False
+        Me.LabelLibre.Visible = True
+        Me.LabelAtender.Visible = False
+        Me.LabelAusente.Visible = False
+        Me.LabelEspera.Visible = False
+        Me.LabelNonShow.Visible = False
+        Me.LabelRedirect.Visible = False
+        Me.LabelTicketAbajo.Visible = False
+        Me.LblTicket.Visible = False
+        Area_Ticket = ""
+        Me.Lblverde.Visible = False
+        Me.txtName1.Visible = False
+        Me.txtNit1.Visible = False
+        Me.Button1.Visible = False
+        Me.lblNit.Visible = False
+        Me.lblName.Visible = False
+    End Sub
+
+    Private Sub Graba_Tramites2()
+        Dim indice_tramites As Integer = 0
+        Dim tramite_a_grabar As String = ""
+        Dim timeCall = DateTime.Now.ToString("yyyy/MM/dd HH:mm")
+        For indice = 1 To 16
+            tramite_a_grabar = ""
+            Select Case indice
+                Case 1
+                    If Me.ChkPrim01.Visible = True Then
+                        If Me.ChkPrim01.Checked = True Then
+                            indice_tramites = 1
+                            tramite_a_grabar = Me.ChkPrim01.Text
+                            Exit For
+                        End If
+                    End If
+                Case 2
+                    If Me.ChkPrim02.Visible = True Then
+                        If Me.ChkPrim02.Checked = True Then
+                            indice_tramites = 1
+                            tramite_a_grabar = Me.ChkPrim02.Text
+                            Exit For
+                        End If
+                    End If
+                Case 3
+                    If Me.ChkPrim03.Visible = True Then
+                        If Me.ChkPrim03.Checked = True Then
+                            indice_tramites = 1
+                            tramite_a_grabar = Me.ChkPrim03.Text
+                            Exit For
+                        End If
+                    End If
+                Case 4
+                    If Me.ChkPrim04.Visible = True Then
+                        If Me.ChkPrim04.Checked = True Then
+                            indice_tramites = 1
+                            tramite_a_grabar = Me.ChkPrim04.Text
+                            Exit For
+                        End If
+                    End If
+                Case 5
+                    If Me.ChkPrim05.Visible = True Then
+                        If Me.ChkPrim05.Checked = True Then
+                            indice_tramites = 1
+                            tramite_a_grabar = Me.ChkPrim05.Text
+                            Exit For
+                        End If
+                    End If
+                Case 6
+                    If Me.ChkPrim06.Visible = True Then
+                        If Me.ChkPrim06.Checked = True Then
+                            indice_tramites = 1
+                            tramite_a_grabar = Me.ChkPrim06.Text
+                            Exit For
+                        End If
+                    End If
+                Case 7
+                    If Me.ChkPrim07.Visible = True Then
+                        If Me.ChkPrim07.Checked = True Then
+                            indice_tramites = 1
+                            tramite_a_grabar = Me.ChkPrim07.Text
+                            Exit For
+                        End If
+                    End If
+                Case 8
+                    If Me.ChkPrim08.Visible = True Then
+                        If Me.ChkPrim08.Checked = True Then
+                            indice_tramites = 1
+                            tramite_a_grabar = Me.ChkPrim08.Text
+                            Exit For
+                        End If
+                    End If
+                Case 9
+                    If Me.ChkPrim09.Visible = True Then
+                        If Me.ChkPrim09.Checked = True Then
+                            indice_tramites = 1
+                            tramite_a_grabar = Me.ChkPrim09.Text
+                            Exit For
+                        End If
+                    End If
+                Case 10
+                    If Me.ChkPrim10.Visible = True Then
+                        If Me.ChkPrim10.Checked = True Then
+                            indice_tramites = 1
+                            tramite_a_grabar = Me.ChkPrim10.Text
+                            Exit For
+                        End If
+                    End If
+                Case 11
+                    If Me.ChkPrim11.Visible = True Then
+                        If Me.ChkPrim11.Checked = True Then
+                            indice_tramites = 1
+                            tramite_a_grabar = Me.ChkPrim11.Text
+                            Exit For
+                        End If
+                    End If
+                Case 12
+                    If Me.ChkPrim12.Visible = True Then
+                        If Me.ChkPrim12.Checked = True Then
+                            indice_tramites = 1
+                            tramite_a_grabar = Me.ChkPrim12.Text
+                            Exit For
+                        End If
+                    End If
+                Case 13
+                    If Me.ChkPrim13.Visible = True Then
+                        If Me.ChkPrim13.Checked = True Then
+                            indice_tramites = 1
+                            tramite_a_grabar = Me.ChkPrim13.Text
+                            Exit For
+                        End If
+                    End If
+                Case 14
+                    If Me.ChkPrim14.Visible = True Then
+                        If Me.ChkPrim14.Checked = True Then
+                            indice_tramites = 1
+                            tramite_a_grabar = Me.ChkPrim14.Text
+                            Exit For
+                        End If
+                    End If
+                Case 15
+                    If Me.ChkPrim15.Visible = True Then
+                        If Me.ChkPrim15.Checked = True Then
+                            indice_tramites = 1
+                            tramite_a_grabar = Me.ChkPrim15.Text
+                            Exit For
+                        End If
+                    End If
+                Case 16
+                    If Me.ChkPrim16.Visible = True Then
+                        If Me.ChkPrim16.Checked = True Then
+                            indice_tramites = 1
+                            tramite_a_grabar = Me.ChkPrim16.Text
+                            Exit For
+                        End If
+                    End If
+            End Select
+        Next
+        Dim instruccion_insert As String
+        instruccion_insert = "insert into IQ_TickTram values ("
+        instruccion_insert = instruccion_insert & "'" & Computer_Area & "', "
+        instruccion_insert = instruccion_insert & "'" & "C-" & timeCall & "', "
+        instruccion_insert = instruccion_insert & " '" & Format(DateTime.Today, "yyyy/MM/dd") & "', "
+        instruccion_insert = instruccion_insert & CStr(indice_tramites) & ", "
+        For indice_busqueda = 0 To DsTramites.Tables("Iq_TipTram").Rows.Count - 1
+            If Trim(DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")) = Trim(tramite_a_grabar) Then
+                instruccion_insert = instruccion_insert & CStr(DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Codigo")) & ", "
+            End If
+        Next
+        instruccion_insert = instruccion_insert & " '" & Computer_Code & "')"
+        Dim IQ_Cnn As New OleDb.OleDbConnection(Cnn_Central_Server)
+        Try
+            IQ_Cnn.Open()
+            Dim IQ_Cmm2 As New OleDb.OleDbCommand(instruccion_insert, IQ_Cnn)
+            Dim RegistrosInsertados As Long = IQ_Cmm2.ExecuteNonQuery()
+            IQ_Cnn.Close()
+        Catch ex As Exception
+            IQ_Cnn.Close()
+            ' MessageBox.Show(ex.Message, Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+            Exit Try
+        End Try
+        For indice = 1 To 32
+            tramite_a_grabar = ""
+            Select Case indice
+                Case 1
+                    If Me.ChkSec01.Visible = True Then
+                        If Me.ChkSec01.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec01.Text
+                        End If
+                    End If
+                Case 2
+                    If Me.ChkSec02.Visible = True Then
+                        If Me.ChkSec02.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec02.Text
+                        End If
+                    End If
+                Case 3
+                    If Me.ChkSec03.Visible = True Then
+                        If Me.ChkSec03.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec03.Text
+                        End If
+                    End If
+                Case 4
+                    If Me.ChkSec04.Visible = True Then
+                        If Me.ChkSec04.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec04.Text
+                        End If
+                    End If
+                Case 5
+                    If Me.ChkSec05.Visible = True Then
+                        If Me.ChkSec05.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec05.Text
+                        End If
+                    End If
+                Case 6
+                    If Me.ChkSec06.Visible = True Then
+                        If Me.ChkSec06.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec06.Text
+                        End If
+                    End If
+                Case 7
+                    If Me.ChkSec07.Visible = True Then
+                        If Me.ChkSec07.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec07.Text
+                        End If
+                    End If
+                Case 8
+                    If Me.ChkSec08.Visible = True Then
+                        If Me.ChkSec08.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec08.Text
+                        End If
+                    End If
+                Case 9
+                    If Me.ChkSec09.Visible = True Then
+                        If Me.ChkSec09.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec09.Text
+                        End If
+                    End If
+                Case 10
+                    If Me.ChkSec10.Visible = True Then
+                        If Me.ChkSec10.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec10.Text
+                        End If
+                    End If
+                Case 11
+                    If Me.ChkSec11.Visible = True Then
+                        If Me.ChkSec11.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec11.Text
+                        End If
+                    End If
+                Case 12
+                    If Me.ChkSec12.Visible = True Then
+                        If Me.ChkSec12.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec12.Text
+                        End If
+                    End If
+                Case 13
+                    If Me.ChkSec13.Visible = True Then
+                        If Me.ChkSec13.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec13.Text
+                        End If
+                    End If
+                Case 14
+                    If Me.ChkSec14.Visible = True Then
+                        If Me.ChkSec14.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec14.Text
+                        End If
+                    End If
+                Case 15
+                    If Me.ChkSec15.Visible = True Then
+                        If Me.ChkSec15.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec15.Text
+                        End If
+                    End If
+                Case 16
+                    If Me.ChkSec16.Visible = True Then
+                        If Me.ChkSec16.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec16.Text
+                        End If
+                    End If
+                Case 17
+                    If Me.ChkSec17.Visible = True Then
+                        If Me.ChkSec17.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec17.Text
+                        End If
+                    End If
+                Case 18
+                    If Me.ChkSec18.Visible = True Then
+                        If Me.ChkSec18.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec18.Text
+                        End If
+                    End If
+                Case 19
+                    If Me.ChkSec19.Visible = True Then
+                        If Me.ChkSec19.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec19.Text
+                        End If
+                    End If
+                Case 20
+                    If Me.ChkSec20.Visible = True Then
+                        If Me.ChkSec20.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec20.Text
+                        End If
+                    End If
+                Case 21
+                    If Me.ChkSec21.Visible = True Then
+                        If Me.ChkSec21.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec21.Text
+                        End If
+                    End If
+                Case 22
+                    If Me.ChkSec22.Visible = True Then
+                        If Me.ChkSec22.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec22.Text
+                        End If
+                    End If
+                Case 23
+                    If Me.ChkSec23.Visible = True Then
+                        If Me.ChkSec23.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec23.Text
+                        End If
+                    End If
+                Case 24
+                    If Me.ChkSec24.Visible = True Then
+                        If Me.ChkSec24.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec24.Text
+                        End If
+                    End If
+                Case 25
+                    If Me.ChkSec25.Visible = True Then
+                        If Me.ChkSec25.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec25.Text
+                        End If
+                    End If
+                Case 26
+                    If Me.ChkSec26.Visible = True Then
+                        If Me.ChkSec26.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec26.Text
+                        End If
+                    End If
+                Case 27
+                    If Me.ChkSec27.Visible = True Then
+                        If Me.ChkSec27.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec27.Text
+                        End If
+                    End If
+                Case 28
+                    If Me.ChkSec28.Visible = True Then
+                        If Me.ChkSec28.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec28.Text
+                        End If
+                    End If
+                Case 29
+                    If Me.ChkSec29.Visible = True Then
+                        If Me.ChkSec29.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec29.Text
+                        End If
+                    End If
+                Case 30
+                    If Me.ChkSec30.Visible = True Then
+                        If Me.ChkSec30.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec30.Text
+                        End If
+                    End If
+                Case 31
+                    If Me.ChkSec31.Visible = True Then
+                        If Me.ChkSec31.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec31.Text
+                        End If
+                    End If
+                Case 32
+                    If Me.ChkSec32.Visible = True Then
+                        If Me.ChkSec32.Checked = True Then
+                            indice_tramites += 1
+                            tramite_a_grabar = Me.ChkSec32.Text
+                        End If
+                    End If
+            End Select
+            If tramite_a_grabar <> "" Then
+                instruccion_insert = "insert into IQ_TickTram values ("
+                instruccion_insert = instruccion_insert & "'" & Computer_Area & "', "
+                instruccion_insert = instruccion_insert & "'" & "C-" & timeCall & "', "
+                instruccion_insert = instruccion_insert & " '" & Format(DateTime.Today, "yyyy/MM/dd") & "', "
+                instruccion_insert = instruccion_insert & CStr(indice_tramites) & ", "
+                For indice_busqueda = 0 To DsTramites.Tables("Iq_TipTram").Rows.Count - 1
+                    If Trim(DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Descripcion")) = Trim(tramite_a_grabar) Then
+                        instruccion_insert = instruccion_insert & CStr(DsTramites.Tables("Iq_TipTram").Rows(indice_busqueda).Item("IqTipTram_Codigo")) & ", "
+                    End If
+                Next
+                instruccion_insert = instruccion_insert & " '" & Computer_Code & "')"
+                Try
+                    IQ_Cnn.Open()
+                    Dim IQ_Cmm2 As New OleDb.OleDbCommand(instruccion_insert, IQ_Cnn)
+                    Dim RegistrosInsertados As Long = IQ_Cmm2.ExecuteNonQuery()
+                    IQ_Cnn.Close()
+                Catch ex As Exception
+                    IQ_Cnn.Close()
+                    '   MessageBox.Show(ex.Message, Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                    Exit Try
+                End Try
+            End If
+        Next
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs)
+        Graba_Tramites2()
     End Sub
 End Class
 

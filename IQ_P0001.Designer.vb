@@ -77,8 +77,8 @@ Partial Class IQ_P0001
         Me.ChkPrim01 = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PnlSecundario = New System.Windows.Forms.Panel()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
+        Me.lblName = New System.Windows.Forms.Label()
+        Me.lblNit = New System.Windows.Forms.Label()
         Me.txtName1 = New System.Windows.Forms.TextBox()
         Me.txtNit1 = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -116,11 +116,14 @@ Partial Class IQ_P0001
         Me.ChkSec01 = New System.Windows.Forms.CheckBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnPhone = New System.Windows.Forms.Button()
         CType(Me.Amarillo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Verde, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Rojo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PnlPrimario.SuspendLayout()
         Me.PnlSecundario.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'LblAmarillo
@@ -637,8 +640,8 @@ Partial Class IQ_P0001
         'PnlSecundario
         '
         Me.PnlSecundario.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.PnlSecundario.Controls.Add(Me.Label7)
-        Me.PnlSecundario.Controls.Add(Me.Label6)
+        Me.PnlSecundario.Controls.Add(Me.lblName)
+        Me.PnlSecundario.Controls.Add(Me.lblNit)
         Me.PnlSecundario.Controls.Add(Me.txtName1)
         Me.PnlSecundario.Controls.Add(Me.txtNit1)
         Me.PnlSecundario.Controls.Add(Me.Button1)
@@ -680,25 +683,25 @@ Partial Class IQ_P0001
         Me.PnlSecundario.Size = New System.Drawing.Size(1211, 251)
         Me.PnlSecundario.TabIndex = 97
         '
-        'Label7
+        'lblName
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(18, 231)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(54, 13)
-        Me.Label7.TabIndex = 108
-        Me.Label7.Text = "Nombre:"
+        Me.lblName.AutoSize = True
+        Me.lblName.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblName.Location = New System.Drawing.Point(18, 231)
+        Me.lblName.Name = "lblName"
+        Me.lblName.Size = New System.Drawing.Size(54, 13)
+        Me.lblName.TabIndex = 108
+        Me.lblName.Text = "Nombre:"
         '
-        'Label6
+        'lblNit
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(41, 210)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(32, 13)
-        Me.Label6.TabIndex = 107
-        Me.Label6.Text = "NIT:"
+        Me.lblNit.AutoSize = True
+        Me.lblNit.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNit.Location = New System.Drawing.Point(41, 210)
+        Me.lblNit.Name = "lblNit"
+        Me.lblNit.Size = New System.Drawing.Size(32, 13)
+        Me.lblNit.TabIndex = 107
+        Me.lblNit.Text = "NIT:"
         '
         'txtName1
         '
@@ -1028,10 +1031,30 @@ Partial Class IQ_P0001
         'Panel3
         '
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel3.Controls.Add(Me.Button2)
         Me.Panel3.Location = New System.Drawing.Point(14, 5)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(482, 252)
         Me.Panel3.TabIndex = 99
+        '
+        'Button2
+        '
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Location = New System.Drawing.Point(2, 2)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(56, 40)
+        Me.Button2.TabIndex = 0
+        Me.Button2.Text = "Lista de Tickets  "
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'btnPhone
+        '
+        Me.btnPhone.Image = CType(resources.GetObject("btnPhone.Image"), System.Drawing.Image)
+        Me.btnPhone.Location = New System.Drawing.Point(503, 5)
+        Me.btnPhone.Name = "btnPhone"
+        Me.btnPhone.Size = New System.Drawing.Size(45, 45)
+        Me.btnPhone.TabIndex = 100
+        Me.btnPhone.UseVisualStyleBackColor = True
         '
         'IQ_P0001
         '
@@ -1042,6 +1065,7 @@ Partial Class IQ_P0001
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1237, 521)
         Me.ControlBox = False
+        Me.Controls.Add(Me.btnPhone)
         Me.Controls.Add(Me.PnlSecundario)
         Me.Controls.Add(Me.PnlPrimario)
         Me.Controls.Add(Me.LblVersion)
@@ -1083,6 +1107,7 @@ Partial Class IQ_P0001
         Me.PnlPrimario.ResumeLayout(False)
         Me.PnlSecundario.ResumeLayout(False)
         Me.PnlSecundario.PerformLayout()
+        Me.Panel3.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1175,9 +1200,11 @@ Partial Class IQ_P0001
     Friend WithEvents ChkSec04 As System.Windows.Forms.CheckBox
     Friend WithEvents ChkSec01 As System.Windows.Forms.CheckBox
     Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents lblName As System.Windows.Forms.Label
+    Friend WithEvents lblNit As System.Windows.Forms.Label
     Friend WithEvents txtName1 As System.Windows.Forms.TextBox
     Friend WithEvents txtNit1 As System.Windows.Forms.TextBox
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents btnPhone As System.Windows.Forms.Button
 
 End Class
