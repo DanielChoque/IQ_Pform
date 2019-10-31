@@ -388,6 +388,7 @@ Public Class IQ_P0001
         Me.Lblverde.Visible = False
     End Sub
     Private Sub Carga_Tramites(Ticket_Carga As String)
+        enableCall()
         Dim indice_primario As Integer = 0
         Dim indice_secundario As Integer = 0
         Me.ChkPrim01.Visible = False
@@ -1056,6 +1057,7 @@ Public Class IQ_P0001
         Next
     End Sub
     Private Sub Proceso_Libre()
+        enableCall()
         If Me.PnlPrimario.Visible = True Then
             If Verifica_Tramites() = False Then
                 Exit Sub
@@ -1063,7 +1065,6 @@ Public Class IQ_P0001
             If toogleCall = 1 Then
                 Graba_Tramites2()
                 toogleCall = 0
-                Me.LblAmarillo.Text = "en llamada"
             Else
                 toogleCall = 0
                 Graba_Tramites()
@@ -1328,7 +1329,8 @@ Public Class IQ_P0001
         Me.TimerIdle.Start()
         Me.TimerSearch.Enabled = False
         Me.TimerSearch.Stop()
-        Carga_Tramites(Mid(Me.LblTicket.Text, 1, 3))
+        'Carga_Tramites(Mid(Me.LblTicket.Text, 1, 3))
+        Carga_Tramites("SAC")
         Me.ButtonEspera.Visible = True
         Me.ButtonLibre.Visible = True
         Me.ButtonNonShow.Visible = False
@@ -1917,7 +1919,8 @@ Public Class IQ_P0001
                 Me.Lblverde.Visible = False
                 Me.LblTicket.Text = Mid(resultado, 1, InStr(resultado, "|") - 1)
                 Area_Ticket = Mid(resultado, InStr(resultado, "|") + 1, Len(resultado) - InStr(resultado, "|"))
-                Carga_Tramites(Mid(Me.LblTicket.Text, 1, 3))
+                'Carga_Tramites(Mid(Me.LblTicket.Text, 1, 3))
+                Carga_Tramites("SAC")
                 Me.LblTicket.Visible = True
                 Me.LabelTicketAbajo.Visible = True
                 Me.ButtonAtender.Visible = True
@@ -2113,7 +2116,8 @@ Public Class IQ_P0001
                         Me.Lblverde.Visible = False
                         Me.LblTicket.Text = Mid(resultado, 1, InStr(resultado, "|") - 1)
                         Area_Ticket = Mid(resultado, InStr(resultado, "|") + 1, Len(resultado) - InStr(resultado, "|"))
-                        Carga_Tramites(Mid(Me.LblTicket.Text, 1, 3))
+                        'Carga_Tramites(Mid(Me.LblTicket.Text, 1, 3))
+                        Carga_Tramites("SAC")
                         Me.LblTicket.Visible = True
                         Me.LabelTicketAbajo.Visible = True
                         Me.ButtonAtender.Visible = True
@@ -2191,7 +2195,8 @@ Public Class IQ_P0001
                             Area_Ticket = Areas_Espera(ind_cmb - 1)
                         End If
                     Next
-                    Carga_Tramites(Mid(Me.LblTicket.Text, 1, 3))
+                    'Carga_Tramites(Mid(Me.LblTicket.Text, 1, 3))
+                    Carga_Tramites("SAC")
                     Me.LblTicket.Visible = True
                     Me.LabelTicketAbajo.Visible = True
                     Me.Verde.Visible = False
@@ -2646,6 +2651,10 @@ nuevamente:
         Proceso_NonShow()
     End Sub
     Private Sub Proceso_Ausente()
+        disableCall()
+        'Me.btnPhone.Enabled = True
+        ' Me.LblRojo.Text = "AUSENTE"
+        Me.btnPhone.Enabled = False
         Dim justificativo As String = ""
         Me.TimerWait.Enabled = False
         Me.TimerWait.Stop()
@@ -2655,6 +2664,7 @@ nuevamente:
         If UCase(justificativo) = "X" Then
             Me.TimerWait.Enabled = True
             Me.TimerWait.Start()
+            enableCall()
             Exit Sub
         End If
         If Me.PnlPrimario.Visible = True Then
@@ -4128,6 +4138,7 @@ nuevamente:
         Proceso_AusenteLL()
         Carga_Tramites("SAC")
         toogleCall = 1
+        disableCall()
     End Sub
     Private Sub Proceso_AusenteLL()
         Dim justificativo As String = ""
@@ -4627,6 +4638,108 @@ nuevamente:
     Private Sub Button3_Click(sender As Object, e As EventArgs)
         Graba_Tramites2()
     End Sub
+    Private Sub enableCall()
+        Me.btnPhone.Enabled = True
+        Me.LblRojo.Text = "AUSENTE"
+    End Sub
+    Private Sub disableCall()
+        Me.btnPhone.Enabled = False
+        Me.LblRojo.Text = "LLAMADA"
+    End Sub
+    Private Function Verifica_Tramites2() As Boolean
+        Verifica_Tramites2 = True
+        Dim num_primarios As Integer
+        If Me.ChkPrim01.Visible = True Then
+            If Me.ChkPrim01.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+        If Me.ChkPrim02.Visible = True Then
+            If Me.ChkPrim02.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+        If Me.ChkPrim03.Visible = True Then
+            If Me.ChkPrim03.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+        If Me.ChkPrim04.Visible = True Then
+            If Me.ChkPrim04.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+        If Me.ChkPrim05.Visible = True Then
+            If Me.ChkPrim05.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+        If Me.ChkPrim06.Visible = True Then
+            If Me.ChkPrim06.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+        If Me.ChkPrim07.Visible = True Then
+            If Me.ChkPrim07.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+        If Me.ChkPrim08.Visible = True Then
+            If Me.ChkPrim08.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+        If Me.ChkPrim09.Visible = True Then
+            If Me.ChkPrim09.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+        If Me.ChkPrim10.Visible = True Then
+            If Me.ChkPrim10.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+        If Me.ChkPrim11.Visible = True Then
+            If Me.ChkPrim11.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+        If Me.ChkPrim12.Visible = True Then
+            If Me.ChkPrim12.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+        If Me.ChkPrim13.Visible = True Then
+            If Me.ChkPrim13.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+        If Me.ChkPrim14.Visible = True Then
+            If Me.ChkPrim14.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+        If Me.ChkPrim15.Visible = True Then
+            If Me.ChkPrim15.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+        If Me.ChkPrim16.Visible = True Then
+            If Me.ChkPrim16.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+        If num_primarios = 0 Then
+            MessageBox.Show("DEBE SELECCIONAR POR LO MENOS UN TRAMITE PRIMARIO EFECTUADO POR EL TICKET", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Verifica_Tramites2 = False
+            Exit Function
+        End If
+        If num_primarios > 3 Then
+            MessageBox.Show("NO PUEDE SELECCIONAR MAS DE 3 TRAMITES PRIMARIOS EFECTUADOS POR EL TICKET", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Verifica_Tramites2 = False
+            Exit Function
+        End If
+    End Function
 End Class
 
 
