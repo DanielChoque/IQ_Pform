@@ -29,13 +29,15 @@
         grid.Columns(2).Width = 200 + i + i
         grid.Columns(3).Width = 200 + i + i
         dt.Rows.Clear()
+        Dim da = Carga_Reader_O2.FieldCount
+
         While Carga_Reader_O2.Read
-            dt.Rows.Add(Carga_Reader_O2.GetValue(5), Carga_Reader_O2.GetValue(1), Carga_Reader_O2.GetValue(13), Carga_Reader_O2.GetValue(15), Carga_Reader_O2.GetValue(16), Carga_Reader_O2.GetValue(11))
+            dt.Rows.Add(Carga_Reader_O2.GetValue(5), Carga_Reader_O2.GetValue(1), Carga_Reader_O2.GetValue(13) & da, Carga_Reader_O2.GetValue(16), Carga_Reader_O2.GetValue(15), Carga_Reader_O2.GetValue(11))
         End While
         Carga_Coneccion_O2.Close()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
 
         ' MsgBox("" & Computer_Code & " : " & Format(Date.Now, "dd/MM/yyyy"))
         'Dim s As String

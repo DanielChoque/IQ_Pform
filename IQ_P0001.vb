@@ -643,6 +643,11 @@ Public Class IQ_P0001
         Me.ChkSec32.Checked = False
         Me.PnlPrimario.Visible = True
         Me.PnlSecundario.Visible = True
+        Me.lblNit.Visible = True
+        Me.lblName.Visible = True
+        Me.txtNit1.Visible = True
+        Me.txtName1.Visible = True
+        Me.Button1.Visible = True
     End Sub
     Private Sub Graba_Tramites()
         Dim indice_tramites As Integer = 0
@@ -1069,6 +1074,7 @@ Public Class IQ_P0001
                 toogleCall = 0
                 Graba_Tramites()
             End If
+            saveNitNameNoMessage()
         End If
         Dim Central_Cnn As New OleDb.OleDbConnection(Cnn_Central_Server)
         Dim CmmCentral As New OleDb.OleDbCommand("", Central_Cnn)
@@ -4102,6 +4108,9 @@ nuevamente:
     End Sub
 
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+        saveNitName()
+    End Sub
+    Private Sub saveNitName()
         If txtNit1.Text = "" And txtName1.Text = "" Then
             MessageBox.Show("No hay datos para guardar")
         Else
@@ -4114,6 +4123,27 @@ nuevamente:
                 Dim RegistrosInsertados As Long = IQ_Cmm.ExecuteNonQuery()
                 IQ_Cnn.Close()
                 MessageBox.Show("Se Guardó de Manera Correcta el" + vbCr + "NIT:" + txtNit1.Text + vbCr + "Nombre:" + txtName1.Text)
+            Catch exc As Exception
+                Dim Mensaje_Excepcion As String
+                Mensaje_Excepcion = exc.Message
+                MessageBox.Show(Mensaje_Excepcion, Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                Exit Sub
+            End Try
+        End If
+    End Sub
+    Private Sub saveNitNameNoMessage()
+        If txtNit1.Text = "" And txtName1.Text = "" Then
+            ' MessageBox.Show("No hay datos para guardar")
+        Else
+            Dim instruccion_insert As String = ""
+            instruccion_insert = "Update Iq_Tickets Set IQTicket_NIT =   '" & txtNit1.Text & "' , IQTicket_Nombre = '" & txtName1.Text & "' where IQTicket_Area = '" & Area_Ticket & "' and IQTicket_Ticket = '" & Me.LblTicket.Text & "' And IQTicket_Estado = 'P' and IQTicket_Fecha = CONVERT(varchar(10), getdate(), 111)"
+            Try
+                Dim IQ_Cnn As New OleDb.OleDbConnection(Cnn_Central_Server)
+                IQ_Cnn.Open()
+                Dim IQ_Cmm As New OleDb.OleDbCommand(instruccion_insert, IQ_Cnn)
+                Dim RegistrosInsertados As Long = IQ_Cmm.ExecuteNonQuery()
+                IQ_Cnn.Close()
+                'MessageBox.Show("Se Guardó de Manera Correcta el" + vbCr + "NIT:" + txtNit1.Text + vbCr + "Nombre:" + txtName1.Text)
             Catch exc As Exception
                 Dim Mensaje_Excepcion As String
                 Mensaje_Excepcion = exc.Message
@@ -4135,10 +4165,19 @@ nuevamente:
 
 
     Private Sub btnPhone_Click(sender As Object, e As EventArgs) Handles btnPhone.Click
-        Proceso_AusenteLL()
-        Carga_Tramites("SAC")
-        toogleCall = 1
-        disableCall()
+        Dim result As Integer = MessageBox.Show("¿Registrar Tramites de llamada?", "Registrar", MessageBoxButtons.YesNo)
+        If result = DialogResult.Cancel Then
+            MessageBox.Show("Cancel pressed")
+        ElseIf result = DialogResult.No Then
+            ' MessageBox.Show("")
+        ElseIf result = DialogResult.Yes Then
+            ' MessageBox.Show("Yes pressed")
+            Proceso_AusenteLL()
+            Carga_Tramites("SAC")
+            toogleCall = 1
+            disableCall()
+        End If
+       
     End Sub
     Private Sub Proceso_AusenteLL()
         Dim justificativo As String = ""
@@ -4649,83 +4688,194 @@ nuevamente:
     Private Function Verifica_Tramites2() As Boolean
         Verifica_Tramites2 = True
         Dim num_primarios As Integer
-        If Me.ChkPrim01.Visible = True Then
-            If Me.ChkPrim01.Checked = True Then
+        If Me.ChkSec01.Visible = True Then
+            If Me.ChkSec01.Checked = True Then
                 num_primarios += 1
             End If
         End If
-        If Me.ChkPrim02.Visible = True Then
-            If Me.ChkPrim02.Checked = True Then
+
+        If Me.ChkSec02.Visible = True Then
+            If Me.ChkSec02.Checked = True Then
                 num_primarios += 1
             End If
         End If
-        If Me.ChkPrim03.Visible = True Then
-            If Me.ChkPrim03.Checked = True Then
+
+        If Me.ChkSec03.Visible = True Then
+            If Me.ChkSec03.Checked = True Then
                 num_primarios += 1
             End If
         End If
-        If Me.ChkPrim04.Visible = True Then
-            If Me.ChkPrim04.Checked = True Then
+
+        If Me.ChkSec04.Visible = True Then
+            If Me.ChkSec04.Checked = True Then
                 num_primarios += 1
             End If
         End If
-        If Me.ChkPrim05.Visible = True Then
-            If Me.ChkPrim05.Checked = True Then
+
+        If Me.ChkSec05.Visible = True Then
+            If Me.ChkSec05.Checked = True Then
                 num_primarios += 1
             End If
         End If
-        If Me.ChkPrim06.Visible = True Then
-            If Me.ChkPrim06.Checked = True Then
+
+        If Me.ChkSec06.Visible = True Then
+            If Me.ChkSec06.Checked = True Then
                 num_primarios += 1
             End If
         End If
-        If Me.ChkPrim07.Visible = True Then
-            If Me.ChkPrim07.Checked = True Then
+
+        If Me.ChkSec07.Visible = True Then
+            If Me.ChkSec07.Checked = True Then
                 num_primarios += 1
             End If
         End If
-        If Me.ChkPrim08.Visible = True Then
-            If Me.ChkPrim08.Checked = True Then
+
+        If Me.ChkSec08.Visible = True Then
+            If Me.ChkSec08.Checked = True Then
                 num_primarios += 1
             End If
         End If
-        If Me.ChkPrim09.Visible = True Then
-            If Me.ChkPrim09.Checked = True Then
+
+        If Me.ChkSec09.Visible = True Then
+            If Me.ChkSec09.Checked = True Then
                 num_primarios += 1
             End If
         End If
-        If Me.ChkPrim10.Visible = True Then
-            If Me.ChkPrim10.Checked = True Then
+
+        If Me.ChkSec10.Visible = True Then
+            If Me.ChkSec10.Checked = True Then
                 num_primarios += 1
             End If
         End If
-        If Me.ChkPrim11.Visible = True Then
-            If Me.ChkPrim11.Checked = True Then
+
+        If Me.ChkSec11.Visible = True Then
+            If Me.ChkSec11.Checked = True Then
                 num_primarios += 1
             End If
         End If
-        If Me.ChkPrim12.Visible = True Then
-            If Me.ChkPrim12.Checked = True Then
+
+        If Me.ChkSec12.Visible = True Then
+            If Me.ChkSec12.Checked = True Then
                 num_primarios += 1
             End If
         End If
-        If Me.ChkPrim13.Visible = True Then
-            If Me.ChkPrim13.Checked = True Then
+
+        If Me.ChkSec13.Visible = True Then
+            If Me.ChkSec13.Checked = True Then
                 num_primarios += 1
             End If
         End If
-        If Me.ChkPrim14.Visible = True Then
-            If Me.ChkPrim14.Checked = True Then
+
+        If Me.ChkSec14.Visible = True Then
+            If Me.ChkSec14.Checked = True Then
                 num_primarios += 1
             End If
         End If
-        If Me.ChkPrim15.Visible = True Then
-            If Me.ChkPrim15.Checked = True Then
+
+        If Me.ChkSec15.Visible = True Then
+            If Me.ChkSec15.Checked = True Then
                 num_primarios += 1
             End If
         End If
-        If Me.ChkPrim16.Visible = True Then
-            If Me.ChkPrim16.Checked = True Then
+
+        If Me.ChkSec16.Visible = True Then
+            If Me.ChkSec16.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+
+        If Me.ChkSec17.Visible = True Then
+            If Me.ChkSec17.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+
+        If Me.ChkSec18.Visible = True Then
+            If Me.ChkSec18.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+
+        If Me.ChkSec19.Visible = True Then
+            If Me.ChkSec19.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+
+        If Me.ChkSec20.Visible = True Then
+            If Me.ChkSec20.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+
+        If Me.ChkSec21.Visible = True Then
+            If Me.ChkSec21.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+
+        If Me.ChkSec22.Visible = True Then
+            If Me.ChkSec22.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+
+        If Me.ChkSec23.Visible = True Then
+            If Me.ChkSec23.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+
+        If Me.ChkSec24.Visible = True Then
+            If Me.ChkSec24.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+
+        If Me.ChkSec25.Visible = True Then
+            If Me.ChkSec25.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+
+        If Me.ChkSec26.Visible = True Then
+            If Me.ChkSec26.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+
+        If Me.ChkSec27.Visible = True Then
+            If Me.ChkSec27.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+
+        If Me.ChkSec28.Visible = True Then
+            If Me.ChkSec28.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+
+        If Me.ChkSec29.Visible = True Then
+            If Me.ChkSec29.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+
+        If Me.ChkSec30.Visible = True Then
+            If Me.ChkSec30.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+
+        If Me.ChkSec31.Visible = True Then
+            If Me.ChkSec31.Checked = True Then
+                num_primarios += 1
+            End If
+        End If
+
+        If Me.ChkSec32.Visible = True Then
+            If Me.ChkSec32.Checked = True Then
                 num_primarios += 1
             End If
         End If
@@ -4734,12 +4884,13 @@ nuevamente:
             Verifica_Tramites2 = False
             Exit Function
         End If
-        If num_primarios > 3 Then
+        If num_primarios > 32 Then
             MessageBox.Show("NO PUEDE SELECCIONAR MAS DE 3 TRAMITES PRIMARIOS EFECTUADOS POR EL TICKET", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Verifica_Tramites2 = False
             Exit Function
         End If
     End Function
+   
 End Class
 
 
