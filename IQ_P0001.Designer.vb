@@ -441,7 +441,7 @@ Partial Class IQ_P0001
         Me.LblVersion.BackColor = System.Drawing.Color.Transparent
         Me.LblVersion.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblVersion.ForeColor = System.Drawing.Color.White
-        Me.LblVersion.Location = New System.Drawing.Point(16, 512)
+        Me.LblVersion.Location = New System.Drawing.Point(16, 482)
         Me.LblVersion.Name = "LblVersion"
         Me.LblVersion.Size = New System.Drawing.Size(33, 9)
         Me.LblVersion.TabIndex = 95
@@ -640,10 +640,6 @@ Partial Class IQ_P0001
         'PnlSecundario
         '
         Me.PnlSecundario.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.PnlSecundario.Controls.Add(Me.lblName)
-        Me.PnlSecundario.Controls.Add(Me.lblNit)
-        Me.PnlSecundario.Controls.Add(Me.txtName1)
-        Me.PnlSecundario.Controls.Add(Me.txtNit1)
         Me.PnlSecundario.Controls.Add(Me.Button1)
         Me.PnlSecundario.Controls.Add(Me.ChkSec29)
         Me.PnlSecundario.Controls.Add(Me.ChkSec30)
@@ -680,14 +676,16 @@ Partial Class IQ_P0001
         Me.PnlSecundario.Controls.Add(Me.Label2)
         Me.PnlSecundario.Location = New System.Drawing.Point(14, 261)
         Me.PnlSecundario.Name = "PnlSecundario"
-        Me.PnlSecundario.Size = New System.Drawing.Size(1211, 251)
+        Me.PnlSecundario.Size = New System.Drawing.Size(1211, 211)
         Me.PnlSecundario.TabIndex = 97
         '
         'lblName
         '
         Me.lblName.AutoSize = True
+        Me.lblName.BackColor = System.Drawing.SystemColors.MenuText
         Me.lblName.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblName.Location = New System.Drawing.Point(18, 231)
+        Me.lblName.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.lblName.Location = New System.Drawing.Point(564, 29)
         Me.lblName.Name = "lblName"
         Me.lblName.Size = New System.Drawing.Size(54, 13)
         Me.lblName.TabIndex = 108
@@ -696,8 +694,10 @@ Partial Class IQ_P0001
         'lblNit
         '
         Me.lblNit.AutoSize = True
+        Me.lblNit.BackColor = System.Drawing.SystemColors.MenuText
         Me.lblNit.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNit.Location = New System.Drawing.Point(41, 210)
+        Me.lblNit.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.lblNit.Location = New System.Drawing.Point(585, 12)
         Me.lblNit.Name = "lblNit"
         Me.lblNit.Size = New System.Drawing.Size(32, 13)
         Me.lblNit.TabIndex = 107
@@ -705,16 +705,16 @@ Partial Class IQ_P0001
         '
         'txtName1
         '
-        Me.txtName1.Location = New System.Drawing.Point(74, 228)
+        Me.txtName1.Location = New System.Drawing.Point(623, 26)
         Me.txtName1.Name = "txtName1"
-        Me.txtName1.Size = New System.Drawing.Size(522, 20)
+        Me.txtName1.Size = New System.Drawing.Size(210, 20)
         Me.txtName1.TabIndex = 106
         '
         'txtNit1
         '
-        Me.txtNit1.Location = New System.Drawing.Point(74, 207)
+        Me.txtNit1.Location = New System.Drawing.Point(623, 5)
         Me.txtNit1.Name = "txtNit1"
-        Me.txtNit1.Size = New System.Drawing.Size(522, 20)
+        Me.txtNit1.Size = New System.Drawing.Size(210, 20)
         Me.txtNit1.TabIndex = 105
         '
         'Button1
@@ -1063,11 +1063,15 @@ Partial Class IQ_P0001
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1237, 521)
+        Me.ClientSize = New System.Drawing.Size(1237, 491)
         Me.ControlBox = False
+        Me.Controls.Add(Me.lblName)
         Me.Controls.Add(Me.btnPhone)
+        Me.Controls.Add(Me.lblNit)
         Me.Controls.Add(Me.PnlSecundario)
+        Me.Controls.Add(Me.txtName1)
         Me.Controls.Add(Me.PnlPrimario)
+        Me.Controls.Add(Me.txtNit1)
         Me.Controls.Add(Me.LblVersion)
         Me.Controls.Add(Me.BtnBell)
         Me.Controls.Add(Me.LstEspera)
@@ -1106,7 +1110,6 @@ Partial Class IQ_P0001
         CType(Me.Rojo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PnlPrimario.ResumeLayout(False)
         Me.PnlSecundario.ResumeLayout(False)
-        Me.PnlSecundario.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()

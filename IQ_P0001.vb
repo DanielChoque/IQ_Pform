@@ -142,7 +142,7 @@ Public Class IQ_P0001
         Me.TimerWait.Enabled = False
         Me.TimerWait.Stop()
         If Me.PnlPrimario.Visible = True Then
-            If Verifica_Tramites() = False Then
+            If Verifica_Tramites2() = False Then
                 Exit Sub
             End If
             Graba_Tramites()
@@ -200,6 +200,7 @@ Public Class IQ_P0001
         End Try
     End Sub
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+
         Dim Ips_Prov(50) As String
         Dim Indice_Ips As Integer = 0
         Timer1.Stop()
@@ -301,6 +302,7 @@ Public Class IQ_P0001
         Me.LstEspera.Visible = True
         Me.LstEspera.Enabled = True
         Me.PnlPrimario.Visible = False
+        nitDisable()
         Me.PnlSecundario.Visible = False
         Dim cn As System.Data.OleDb.OleDbConnection = New System.Data.OleDb.OleDbConnection(Cnn_Central_Server)
         cn.Open()
@@ -377,6 +379,8 @@ Public Class IQ_P0001
                 Area_Ticket = Carga_Reader_O2.GetValue(0)
                 Me.LabelTicketAbajo.Visible = True
                 Me.LabelSalir.Visible = True
+                disablePhone()
+
                 Exit Sub
             End If
         End While
@@ -642,6 +646,7 @@ Public Class IQ_P0001
         Me.ChkSec31.Checked = False
         Me.ChkSec32.Checked = False
         Me.PnlPrimario.Visible = True
+        nitEnable()
         Me.PnlSecundario.Visible = True
         Me.lblNit.Visible = True
         Me.lblName.Visible = True
@@ -1064,7 +1069,7 @@ Public Class IQ_P0001
     Private Sub Proceso_Libre()
         enableCall()
         If Me.PnlPrimario.Visible = True Then
-            If Verifica_Tramites() = False Then
+            If Verifica_Tramites2() = False Then
                 Exit Sub
             End If
             If toogleCall = 1 Then
@@ -1157,6 +1162,7 @@ Public Class IQ_P0001
             Me.ButtonAtender.Visible = False
             Me.PnlSecundario.Visible = False
             Me.PnlPrimario.Visible = False
+            nitDisable()
             Me.BtnBell.Visible = False
             Me.ButtonAusente.Visible = True
             Me.ButtonEspera.Visible = False
@@ -1280,6 +1286,7 @@ Public Class IQ_P0001
             Me.ButtonRetorno.Visible = True
             Me.ButtonSalir.Visible = True
             Me.PnlPrimario.Visible = False
+            nitDisable()
             Me.PnlSecundario.Visible = False
             Me.LabelAtender.Visible = False
             Me.LabelAusente.Visible = True
@@ -1294,6 +1301,7 @@ Public Class IQ_P0001
         End If
     End Sub
     Private Sub Proceso_Atender()
+        disablePhone()
         Dim Central_Cnn As New OleDb.OleDbConnection(Cnn_Central_Server)
         Dim CmmCentral As New OleDb.OleDbCommand("", Central_Cnn)
         CmmCentral.CommandTimeout = 0
@@ -1428,6 +1436,7 @@ Public Class IQ_P0001
             Me.LblTicket.Visible = True
             Area_Ticket = ""
             Me.PnlPrimario.Visible = False
+            nitDisable()
             Me.PnlSecundario.Visible = False
             Me.LabelTicketAbajo.Visible = True
             Me.ButtonAtender.Visible = False
@@ -1967,6 +1976,7 @@ Public Class IQ_P0001
                 Me.LabelTicketAbajo.Visible = True
                 Me.ButtonAtender.Visible = False
                 Me.PnlPrimario.Visible = False
+                nitDisable()
                 Me.PnlSecundario.Visible = False
                 Me.BtnBell.Visible = False
                 Me.ButtonAusente.Visible = True
@@ -2007,6 +2017,7 @@ Public Class IQ_P0001
             Me.BtnBell.Visible = True
             Me.PnlSecundario.Visible = False
             Me.PnlPrimario.Visible = False
+            nitDisable()
             Me.ButtonAusente.Visible = False
             Me.ButtonEspera.Visible = False
             Me.ButtonLibre.Visible = False
@@ -2170,6 +2181,7 @@ Public Class IQ_P0001
                         Me.ButtonEspera.Visible = False
                         Me.ButtonLibre.Visible = False
                         Me.PnlPrimario.Visible = False
+                        nitDisable()
                         Me.PnlSecundario.Visible = False
                         Me.ButtonNonShow.Visible = False
                         Me.ButtonRedirect.Visible = False
@@ -2674,7 +2686,7 @@ nuevamente:
             Exit Sub
         End If
         If Me.PnlPrimario.Visible = True Then
-            If Verifica_Tramites() = False Then
+            If Verifica_Tramites2() = False Then
                 Exit Sub
             End If
             Graba_Tramites()
@@ -2713,6 +2725,7 @@ nuevamente:
         Me.ButtonAtender.Visible = False
         Me.BtnBell.Visible = False
         Me.PnlPrimario.Visible = False
+        nitDisable()
         Me.PnlSecundario.Visible = False
         Me.TimerSearch.Enabled = False
         Me.TimerSearch.Stop()
@@ -2921,6 +2934,7 @@ nuevamente:
                     Me.TimerSearch.Enabled = False
                     Me.TimerSearch.Stop()
                     Me.PnlPrimario.Visible = True
+                    nitEnable()
                     Me.PnlSecundario.Visible = True
                     Me.ButtonEspera.Visible = True
                     Me.ButtonLibre.Visible = True
@@ -4193,7 +4207,7 @@ nuevamente:
             Exit Sub
         End If
         If Me.PnlPrimario.Visible = True Then
-            If Verifica_Tramites() = False Then
+            If Verifica_Tramites2() = False Then
                 Exit Sub
             End If
             Graba_Tramites()
@@ -4232,6 +4246,7 @@ nuevamente:
         Me.ButtonAtender.Visible = False
         Me.BtnBell.Visible = False
         Me.PnlPrimario.Visible = False
+        nitDisable()
         Me.PnlSecundario.Visible = False
         Me.TimerSearch.Enabled = False
         Me.TimerSearch.Stop()
@@ -4880,17 +4895,39 @@ nuevamente:
             End If
         End If
         If num_primarios = 0 Then
-            MessageBox.Show("DEBE SELECCIONAR POR LO MENOS UN TRAMITE PRIMARIO EFECTUADO POR EL TICKET", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("DEBE SELECCIONAR POR LO MENOS UN TRAMITE SECUNDARIO EFECTUADO POR EL TICKET", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Verifica_Tramites2 = False
             Exit Function
         End If
         If num_primarios > 32 Then
-            MessageBox.Show("NO PUEDE SELECCIONAR MAS DE 3 TRAMITES PRIMARIOS EFECTUADOS POR EL TICKET", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("NO PUEDE SELECCIONAR MAS DE 3 TRAMITES SECUNDARIO EFECTUADOS POR EL TICKET", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Verifica_Tramites2 = False
             Exit Function
         End If
     End Function
-   
+    Private Sub disablePhone()
+        Me.btnPhone.Enabled = False
+    End Sub
+    Private Sub enablePhone()
+        Me.btnPhone.Enabled = True
+    End Sub
+
+    Private Sub nitDisable()
+        txtName1.Visible = False
+        txtNit1.Visible = False
+        lblNit.Visible = False
+        lblName.Visible = False
+
+    End Sub
+
+    Private Sub nitEnable()
+        txtName1.Visible = True
+        txtNit1.Visible = True
+        lblNit.Visible = True
+        lblName.Visible = True
+    End Sub
+
+
 End Class
 
 
