@@ -52,9 +52,13 @@
 
     Private Sub btnCall_Click(sender As Object, e As EventArgs) Handles btnLLamada.Click
         recargaCall(Cnn_Central_Server2, Computer_Code2)
+        btnTicket.Enabled = True
+        btnLLamada.Enabled = False
     End Sub
 
     Private Sub btnTicket_Click(sender As Object, e As EventArgs) Handles btnTicket.Click
+        btnTicket.Enabled = False
+        btnLLamada.Enabled = True
         recargaTicket(Cnn_Central_Server2, Computer_Code2)
     End Sub
 
