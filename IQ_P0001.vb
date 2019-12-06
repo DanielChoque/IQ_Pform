@@ -1073,6 +1073,7 @@ Public Class IQ_P0001
                 Exit Sub
             End If
             If toogleCall = 1 Then
+                ' Proceso_AusenteLL()
                 Graba_Tramites2()
                 toogleCall = 0
             Else
@@ -1091,6 +1092,7 @@ Public Class IQ_P0001
         CmmCentral.Parameters.Add("Area", OleDbType.VarChar, 19).Value = Computer_Area
         CmmCentral.Parameters.Add("Action", OleDbType.VarChar, 1).Value = "L"
         CmmCentral.Parameters.Add("Parameter", OleDbType.VarChar, 100).Value = Me.LblTicket.Text
+        'CmmCentral.Parameters.Add("Parameter", OleDbType.VarChar, 100).Value = Me.LblTicket.Text & "|9070532|Daniel choque"
         CmmCentral.Parameters.Add("Area_Ticket", OleDbType.VarChar, 19).Value = Area_Ticket
         CmmCentral.Parameters.Add("Resultado", OleDbType.VarChar, 100).Direction = ParameterDirection.Output
         Dim resultado As String = ""
@@ -1300,7 +1302,7 @@ Public Class IQ_P0001
             Me.LabelSalir.Visible = True
         End If
     End Sub
-    Private Sub Proceso_Atender()
+    Private Sub Proceso_Atender2()
         disablePhone()
         Dim Central_Cnn As New OleDb.OleDbConnection(Cnn_Central_Server)
         Dim CmmCentral As New OleDb.OleDbCommand("", Central_Cnn)
@@ -4183,9 +4185,7 @@ nuevamente:
         If result = DialogResult.Cancel Then
             MessageBox.Show("Cancel pressed")
         ElseIf result = DialogResult.No Then
-            ' MessageBox.Show("")
         ElseIf result = DialogResult.Yes Then
-            ' MessageBox.Show("Yes pressed")
             Proceso_AusenteLL()
             Carga_Tramites("SAC")
             toogleCall = 1
@@ -4197,10 +4197,13 @@ nuevamente:
         Dim justificativo As String = ""
         Me.TimerWait.Enabled = False
         Me.TimerWait.Stop()
-        ' Do Until justificativo <> ""
-        'justificativo = InputBox("Ingrese por favor el Justificativo de Llamada", "")
-        'Loop
-        justificativo = "6c7afada99e4170ca0c400e54c1540bcd334578ff2ec993ef2aa3c771143384f"
+        ' justificativo = "6c7afada99e4|" & txtNit1.Text & "|" & txtName1.Text
+        Do Until justificativo <> ""
+            'justificativo = MsgBox("This information is on the first line. " & vbCrLf & "This information is on the 2nd line. " & vbCrLf & _ "Do you wish to continue?", vbYesNo + vbInformation, "Message Box")
+            'InputBox("Ingrese por favor el Justificativo de su Ausencia (X CANCELA):", "", "")
+            'InputBox("Ingrese por favor el Justificativo de su Ausencia (X CANCELA):", "", "")
+            justificativo = "6c7afada99e4|" & txtNit1.Text & "|" & txtName1.Text
+        Loop
         If UCase(justificativo) = "X" Then
             Me.TimerWait.Enabled = True
             Me.TimerWait.Start()
@@ -4926,7 +4929,69 @@ nuevamente:
         lblNit.Visible = True
         lblName.Visible = True
     End Sub
-
+    Private Sub Proceso_Atender()
+        disablePhone()
+        Dim Central_Cnn As New OleDb.OleDbConnection(Cnn_Central_Server)
+        Dim CmmCentral As New OleDb.OleDbCommand("", Central_Cnn)
+        CmmCentral.CommandTimeout = 0
+        CmmCentral.CommandType = CommandType.StoredProcedure
+        CmmCentral.CommandText = "IQ_SpPlataforma"
+        CmmCentral.Parameters.Add("CodStation", OleDbType.VarChar, 19).Value = Computer_Code
+        CmmCentral.Parameters.Add("Station", OleDbType.VarChar, 6).Value = Computer_Sigla
+        CmmCentral.Parameters.Add("Area", OleDbType.VarChar, 19).Value = Computer_Area
+        CmmCentral.Parameters.Add("Action", OleDbType.VarChar, 1).Value = "O"
+        CmmCentral.Parameters.Add("Parameter", OleDbType.VarChar, 100).Value = Me.LblTicket.Text
+        CmmCentral.Parameters.Add("Area_Ticket", OleDbType.VarChar, 19).Value = Area_Ticket
+        CmmCentral.Parameters.Add("Resultado", OleDbType.VarChar, 100).Direction = ParameterDirection.Output
+        Dim resultado As String = ""
+        Try
+            Central_Cnn.Open()
+            CmmCentral.ExecuteNonQuery()
+            resultado = CmmCentral.Parameters("Resultado").Value
+            Central_Cnn.Close()
+        Catch exc As Exception
+            Dim Mensaje_Excepcion As String
+            Mensaje_Excepcion = exc.Message
+            MessageBox.Show("Error Integrado: " + Mensaje_Excepcion, Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End Try
+        Me.Rojo.Visible = False
+        Me.LblRojo.Visible = False
+        Me.Amarillo.Visible = True
+        Me.LblAmarillo.Visible = True
+        Me.Verde.Visible = False
+        Me.Lblverde.Visible = False
+        Me.ButtonAtender.Visible = False
+        Me.BtnBell.Visible = False
+        Me.ButtonAusente.Visible = True
+        Me.TimerIdle.Interval = 2400000
+        Me.TimerIdle.Tag = "Atencion"
+        Me.TimerWait.Enabled = False
+        Me.TimerIdle.Stop()
+        Me.TimerIdle.Enabled = True
+        Me.TimerIdle.Start()
+        Me.TimerSearch.Enabled = False
+        Me.TimerSearch.Stop()
+        'Carga_Tramites(Mid(Me.LblTicket.Text, 1, 3))
+        Carga_Tramites("SAC")
+        Me.ButtonEspera.Visible = True
+        Me.ButtonLibre.Visible = True
+        Me.ButtonNonShow.Visible = False
+        Me.ButtonRedirect.Visible = True
+        Me.ButtonRetorno.Visible = True
+        Me.ButtonSalir.Visible = True
+        Me.LstEspera.Visible = True
+        Me.LstEspera.Enabled = True
+        Me.LabelAtender.Visible = False
+        Me.LabelAusente.Visible = True
+        Me.LabelEspera.Visible = True
+        Me.LabelLibre.Visible = True
+        Me.LabelNonShow.Visible = False
+        Me.LabelRedirect.Visible = True
+        Me.LabelRetorno.Visible = True
+        Me.LabelSalir.Visible = True
+        disablePhone()
+    End Sub
 
 End Class
 
