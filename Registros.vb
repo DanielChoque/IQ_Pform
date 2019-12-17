@@ -85,7 +85,9 @@
         grid.Columns(0).Width = 200 + i + i
         grid.Columns(1).Width = 100 + i
         grid.Columns(2).Width = 200 + i + i
-        grid.Columns(3).Width = 200 + i + i
+        grid.Columns(3).Width = 100 + i
+        grid.Columns(4).Width = 200 + i
+        grid.Columns(5).Width = 200 + i
         dt.Rows.Clear()
         Dim da = Carga_Reader_O2.FieldCount
 
@@ -99,7 +101,7 @@
         Computer_Code2 = Computer_Code
         Dim Carga_Coneccion_O2 As New OleDb.OleDbConnection(Cnn_Central_Server)
         Carga_Coneccion_O2.Open()
-        Dim Carga_Comando_O2 As New OleDb.OleDbCommand("SELECT * FROM IQ_Ausencias WHERE IQ_Ausencias.IQAusencias_Justificativo LIKE '6c7afada99e4%' AND IQ_Ausencias.IQAusencias_Fecha >='" & Format(Me.DateDesde.Value, "dd/MM/yyyy") & " 00:00:00' AND IQ_Ausencias.IQAusencias_Fecha <= '" & Format(Me.DateHasta.Value, "dd/MM/yyyy") & " 23:59:59' ORDER BY IQ_Ausencias.IQAusencias_Fecha", Carga_Coneccion_O2)
+        Dim Carga_Comando_O2 As New OleDb.OleDbCommand("SELECT * FROM IQ_Ausencias WHERE IQ_Ausencias.IQAusencias_Justificativo LIKE '6c7afada99e4%' AND IQ_Ausencias.IQAusencias_Fecha >='" & Format(Me.DateDesde.Value, "dd/MM/yyyy") & " 00:00:00' AND IQ_Ausencias.IQAusencias_Fecha <= '" & Format(Me.DateHasta.Value, "dd/MM/yyyy") & " 23:59:59' AND IQ_Ausencias.IQAusencias_Punto ='" & Computer_Code & "' ORDER BY IQ_Ausencias.IQAusencias_Fecha", Carga_Coneccion_O2)
         Dim Carga_Reader_O2 As OleDb.OleDbDataReader = Carga_Comando_O2.ExecuteReader(CommandBehavior.CloseConnection)
 
         dt.Columns.Clear()
@@ -115,7 +117,9 @@
         grid.Columns(0).Width = 200 + i + i
         grid.Columns(1).Width = 100 + i
         grid.Columns(2).Width = 200 + i + i
-        grid.Columns(3).Width = 200 + i + i
+        grid.Columns(3).Width = 100 + i
+        grid.Columns(4).Width = 200 + i
+        grid.Columns(5).Width = 200 + i
         dt.Rows.Clear()
         Dim da = Carga_Reader_O2.FieldCount
         Dim numC As Integer

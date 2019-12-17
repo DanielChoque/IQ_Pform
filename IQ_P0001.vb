@@ -1067,6 +1067,8 @@ Public Class IQ_P0001
         Next
     End Sub
     Private Sub Proceso_Libre()
+        Dim nitName As String
+        nitName = ""
         enableCall()
         If Me.PnlPrimario.Visible = True Then
             If Verifica_Tramites2() = False Then
@@ -1076,8 +1078,10 @@ Public Class IQ_P0001
                 ' Proceso_AusenteLL()
                 Graba_Tramites2()
                 toogleCall = 0
+                nitName = "|6c7afada99e4|" & txtNit1.Text & "|" & txtName1.Text
             Else
                 toogleCall = 0
+                nitName = ""
                 Graba_Tramites()
             End If
             saveNitNameNoMessage()
@@ -1091,7 +1095,7 @@ Public Class IQ_P0001
         CmmCentral.Parameters.Add("Station", OleDbType.VarChar, 6).Value = Computer_Sigla
         CmmCentral.Parameters.Add("Area", OleDbType.VarChar, 19).Value = Computer_Area
         CmmCentral.Parameters.Add("Action", OleDbType.VarChar, 1).Value = "L"
-        CmmCentral.Parameters.Add("Parameter", OleDbType.VarChar, 100).Value = Me.LblTicket.Text
+        CmmCentral.Parameters.Add("Parameter", OleDbType.VarChar, 100).Value = Me.LblTicket.Text & nitName
         'CmmCentral.Parameters.Add("Parameter", OleDbType.VarChar, 100).Value = Me.LblTicket.Text & "|9070532|Daniel choque"
         CmmCentral.Parameters.Add("Area_Ticket", OleDbType.VarChar, 19).Value = Area_Ticket
         CmmCentral.Parameters.Add("Resultado", OleDbType.VarChar, 100).Direction = ParameterDirection.Output
