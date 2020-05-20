@@ -66,10 +66,22 @@
     Public Sub recargaTicket(Cnn_Central_Server As String, Computer_Code As String)
         Cnn_Central_Server2 = Cnn_Central_Server
         Computer_Code2 = Computer_Code
-
+        Dim fFecha As String
+        fFecha = GetSetting("I-Queue", "Appl", "ServerCollation", "")
+        Select Case fFecha
+            Case "ymd"
+                fFecha = "yyyy/MM/dd"
+            Case "ydm"
+                fFecha = "yyyy/dd/MM"
+            Case "mdy"
+                fFecha = "MM/dd/yyyy"
+            Case "dmy"
+                fFecha = "dd/MM/yyyy"
+        End Select
         Dim Carga_Coneccion_O2 As New OleDb.OleDbConnection(Cnn_Central_Server)
         Carga_Coneccion_O2.Open()
-        Dim Carga_Comando_O2 As New OleDb.OleDbCommand("SELECT * FROM IQ_Tickets WHERE IQ_Tickets.IQTicket_Emision >= '" & Format(Me.DateDesde.Value, "dd/MM/yyyy") & " 00:00:00' AND  IQ_Tickets.IQTicket_Emision <= '" & Format(Me.DateHasta.Value, "dd/MM/yyyy") & " 23:59:59' AND IQ_Tickets.IQTicket_Punto = '" & Computer_Code & "'  ORDER BY IQ_Tickets.IQTicket_Emision", Carga_Coneccion_O2)
+        'Dim Carga_Comando_O2 As New OleDb.OleDbCommand("SELECT * FROM IQ_Tickets WHERE IQ_Tickets.IQTicket_Emision >= '" & Format(Me.DateDesde.Value, "dd/MM/yyyy") & " 00:00:00' AND  IQ_Tickets.IQTicket_Emision <= '" & Format(Me.DateHasta.Value, "dd/MM/yyyy") & " 23:59:59' AND IQ_Tickets.IQTicket_Punto = '" & Computer_Code & "'  ORDER BY IQ_Tickets.IQTicket_Emision", Carga_Coneccion_O2)
+        Dim Carga_Comando_O2 As New OleDb.OleDbCommand("SELECT * FROM IQ_Tickets WHERE IQ_Tickets.IQTicket_Emision >= '" & Format(Me.DateDesde.Value, fFecha) & " 00:00:00' AND  IQ_Tickets.IQTicket_Emision <= '" & Format(Me.DateHasta.Value, fFecha) & " 23:59:59' AND IQ_Tickets.IQTicket_Punto = '" & Computer_Code & "'  ORDER BY IQ_Tickets.IQTicket_Emision", Carga_Coneccion_O2)
         Dim Carga_Reader_O2 As OleDb.OleDbDataReader = Carga_Comando_O2.ExecuteReader(CommandBehavior.CloseConnection)
 
         dt.Columns.Clear()
@@ -100,8 +112,20 @@
         Cnn_Central_Server2 = Cnn_Central_Server
         Computer_Code2 = Computer_Code
         Dim Carga_Coneccion_O2 As New OleDb.OleDbConnection(Cnn_Central_Server)
+        Dim fFecha As String
+        fFecha = GetSetting("I-Queue", "Appl", "ServerCollation", "")
+        Select Case fFecha
+            Case "ymd"
+                fFecha = "yyyy/MM/dd"
+            Case "ydm"
+                fFecha = "yyyy/dd/MM"
+            Case "mdy"
+                fFecha = "MM/dd/yyyy"
+            Case "dmy"
+                fFecha = "dd/MM/yyyy"
+        End Select
         Carga_Coneccion_O2.Open()
-        Dim Carga_Comando_O2 As New OleDb.OleDbCommand("SELECT * FROM IQ_Ausencias WHERE IQ_Ausencias.IQAusencias_Justificativo LIKE '6c7afada99e4%' AND IQ_Ausencias.IQAusencias_Fecha >='" & Format(Me.DateDesde.Value, "dd/MM/yyyy") & " 00:00:00' AND IQ_Ausencias.IQAusencias_Fecha <= '" & Format(Me.DateHasta.Value, "dd/MM/yyyy") & " 23:59:59' AND IQ_Ausencias.IQAusencias_Punto ='" & Computer_Code & "' ORDER BY IQ_Ausencias.IQAusencias_Fecha", Carga_Coneccion_O2)
+        Dim Carga_Comando_O2 As New OleDb.OleDbCommand("SELECT * FROM IQ_Ausencias WHERE IQ_Ausencias.IQAusencias_Justificativo LIKE '6c7afada99e4%' AND IQ_Ausencias.IQAusencias_Fecha >='" & Format(Me.DateDesde.Value, fFecha) & " 00:00:00' AND IQ_Ausencias.IQAusencias_Fecha <= '" & Format(Me.DateHasta.Value, fFecha) & " 23:59:59' AND IQ_Ausencias.IQAusencias_Punto ='" & Computer_Code & "' ORDER BY IQ_Ausencias.IQAusencias_Fecha", Carga_Coneccion_O2)
         Dim Carga_Reader_O2 As OleDb.OleDbDataReader = Carga_Comando_O2.ExecuteReader(CommandBehavior.CloseConnection)
 
         dt.Columns.Clear()
